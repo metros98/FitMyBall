@@ -1,0 +1,384 @@
+// This is your Prisma schema file
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Ball Data Model
+model Ball {
+  id                String   @id @default(cuid())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Basic Info
+  name              String
+  manufacturer      String
+  modelYear         Int?
+  description       String?  @db.Text
+  marketingCopy     String?  @db.Text
+
+  // Construction
+  construction      String   // "2-piece", "3-piece", "4-piece", "5-piece"
+  coverMaterial     String   // "Ionomer", "Urethane", "Cast Urethane", "Surlyn"
+  coreMaterial      String?
+  layers            Int
+
+  // Performance Characteristics
+  compression       Int      // 40-110+
+
+  // Spin Profile
+  driverSpin        SpinLevel
+  ironSpin          SpinLevel
+  wedgeSpin         SpinLevel
+
+  // Launch Characteristics
+  launchProfile     LaunchLevel
+
+  // Feel
+  feelRating        FeelLevel
+
+  // Durability (1-5 scale)
+  durability        Int      @default(3)
+
+  // Target Player
+  targetHandicapMin Int?
+  targetHandicapMax Int?
+  skillLevel        String[]
+
+  // Pricing
+  pricePerDozen     Decimal  @db.Decimal(6, 2)
+  msrp              Decimal  @db.Decimal(6, 2)
+
+  // Availability
+  availableColors   String[]
+  inStock           Boolean  @default(true)
+  discontinued      Boolean  @default(false)
+
+  // Temperature Performance
+  optimalTemp       TempLevel
+  coldSuitability   Int      @default(3) // 1-5 scale
+
+  // Media
+  imageUrl          String?
+  imageUrls         String[]
+
+  // External Links
+  manufacturerUrl   String?
+  productUrls       Json[]   // Array of { retailer, url, isAffiliate, affiliateUrl }
+
+  // SEO
+  slug              String   @unique
+
+  // Relationships
+  recommendations   RecommendationBall[]
+  userFavorites     UserFavoriteBall[]
+  userTriedBalls    UserTriedBall[]
+
+  @@index([manufacturer])
+  @@index([compression])
+  @@index([pricePerDozen])
+  @@index([discontinued])
+  @@index([slug])
+  @@index([manufacturer, pricePerDozen])
+  @@index([discontinued, construction, coverMaterial])
+  @@index([discontinued, driverSpin, wedgeSpin, feelRating])
+  @@map("balls")
+}
+
+// Enums
+enum SpinLevel {
+  LOW
+  MID
+  HIGH
+}
+
+enum LaunchLevel {
+  LOW
+  MID
+  HIGH
+}
+
+enum FeelLevel {
+  VERY_SOFT
+  SOFT
+  MEDIUM
+  FIRM
+}
+
+enum TempLevel {
+  WARM      // 70°F and above
+  MODERATE  // 50-70°F
+  COLD      // Below 50°F
+  ALL       // All conditions
+}
+
+enum ComparisonLevel {
+  BETTER
+  AS_EXPECTED
+  WORSE
+}
+
+enum SpinComparison {
+  MORE
+  AS_EXPECTED
+  LESS
+}
+
+enum FeelComparison {
+  SOFTER
+  AS_EXPECTED
+  FIRMER
+}
+
+// ============================================================================
+// USER MANAGEMENT & AUTHENTICATION
+// ============================================================================
+
+model User {
+  id                String    @id @default(cuid())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  // Auth Info
+  email             String    @unique
+  emailVerified     DateTime?
+  name              String?
+  passwordHash      String?   // Null if OAuth only
+
+  // Profile Info
+  handicap          Float?    // Actual numeric handicap, e.g. 14.2
+  homeCourseName    String?
+  homeLocation      String?   // City, State
+
+  // Preferences
+  preferredUnits    String    @default("imperial") // "imperial" or "metric"
+
+  // Privacy
+  optInMarketing    Boolean   @default(false)
+  optInAnalytics    Boolean   @default(true)
+
+  // Soft delete
+  deletedAt         DateTime?
+
+  // Relationships
+  accounts          Account[]
+  sessions          Session[]
+  quizSessions      QuizSession[]
+  recommendations   Recommendation[]
+  favoriteBalls     UserFavoriteBall[]
+  triedBalls        UserTriedBall[]
+  profiles          UserProfile[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model UserProfile {
+  id                String   @id @default(cuid())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Profile Type (for seasonal profiles)
+  profileName       String   // "Summer Setup", "Winter Setup", "Default"
+  isDefault         Boolean  @default(false)
+
+  // Saved Quiz Preferences
+  preferredFeel     String?
+  budgetRange       String?
+  colorPreference   String?
+  typicalTemp       String?
+
+  // Performance Metrics
+  driverBallSpeed   Int?     // mph
+  ironDistance8     Int?     // yards
+
+  @@unique([userId, profileName])
+  @@index([userId])
+  @@map("user_profiles")
+}
+
+// ============================================================================
+// QUIZ & RECOMMENDATIONS
+// ============================================================================
+
+model QuizSession {
+  id                String         @id @default(cuid())
+  createdAt         DateTime       @default(now())
+  expiresAt         DateTime       // 30 days from creation
+
+  // User (optional - null for guest sessions)
+  userId            String?
+  user              User?          @relation(fields: [userId], references: [id], onDelete: NoAction)
+
+  // Quiz Data (stored as JSON)
+  quizData          Json           // All quiz responses
+
+  // IP address for rate limiting (guests only)
+  ipAddress         String?
+
+  // Session metadata
+  completed         Boolean        @default(false)
+  shareToken        String?        @unique // For shareable links
+
+  // Relationships
+  recommendation    Recommendation?
+
+  @@index([userId])
+  @@index([shareToken])
+  @@index([expiresAt])
+  @@index([userId, createdAt])
+  @@map("quiz_sessions")
+}
+
+model Recommendation {
+  id                String               @id @default(cuid())
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+
+  // Links
+  userId            String?
+  user              User?                @relation(fields: [userId], references: [id], onDelete: NoAction)
+
+  quizSessionId     String               @unique
+  quizSession       QuizSession          @relation(fields: [quizSessionId], references: [id], onDelete: Cascade)
+
+  // Recommendation Results (top 5 balls with scores)
+  recommendedBalls  RecommendationBall[]
+
+  // Algorithm metadata
+  algorithmVersion  String               @default("1.0")
+
+  // User actions
+  viewed            Boolean              @default(false)
+  saved             Boolean              @default(false)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("recommendations")
+}
+
+model RecommendationBall {
+  id                String         @id @default(cuid())
+
+  recommendationId  String
+  recommendation    Recommendation @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
+
+  ballId            String
+  ball              Ball           @relation(fields: [ballId], references: [id], onDelete: Cascade)
+
+  // Ranking
+  rank              Int            // 1-5 (1 = top recommendation)
+  matchScore        Float          // 0-100
+
+  // Category Scores
+  swingSpeedScore   Float
+  performanceScore  Float
+  preferencesScore  Float
+  conditionsScore   Float
+  currentBallScore  Float
+
+  // Explanation (stored as JSON)
+  explanation       Json           // { whyThisMatches: [], whatYouGain: [], tradeoffs: [] }
+
+  @@unique([recommendationId, ballId])
+  @@index([recommendationId])
+  @@map("recommendation_balls")
+}
+
+// ============================================================================
+// USER BALL INTERACTIONS
+// ============================================================================
+
+model UserFavoriteBall {
+  id                String   @id @default(cuid())
+  createdAt         DateTime @default(now())
+
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  ballId            String
+  ball              Ball     @relation(fields: [ballId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, ballId])
+  @@index([userId])
+  @@map("user_favorite_balls")
+}
+
+model UserTriedBall {
+  id                 String            @id @default(cuid())
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  userId             String
+  user               User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  ballId             String
+  ball               Ball              @relation(fields: [ballId], references: [id], onDelete: Cascade)
+
+  // User Experience
+  rating             Int?              // 1-5 stars
+  notes              String?           @db.Text
+  roundsPlayed       Int?              // How many rounds with this ball
+  wouldRecommend     Boolean?
+
+  // Performance feedback (optional)
+  distanceVsExpected ComparisonLevel?
+  spinVsExpected     SpinComparison?
+  feelVsExpected     FeelComparison?
+
+  @@unique([userId, ballId])
+  @@index([userId])
+  @@map("user_tried_balls")
+}
+
+// ============================================================================
+// NEXTAUTH TABLES (Standard NextAuth Schema)
+// ============================================================================
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
