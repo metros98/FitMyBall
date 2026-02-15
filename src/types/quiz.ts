@@ -51,6 +51,8 @@ export type ImprovementArea =
   | "short_game"
   | "putting";
 
+export type RoundsPerYear = "<10" | "10-50" | "50-100" | "100+";
+
 export interface QuizData {
   // Step 1: Background & Priorities
   currentBall?: {
@@ -58,7 +60,7 @@ export interface QuizData {
     model: string;
   };
   handicap: HandicapRange;
-  roundsPerYear: string;
+  roundsPerYear: RoundsPerYear;
   priorityType: PriorityType;
   mostImportant: MostImportant;
 
