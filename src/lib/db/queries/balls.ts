@@ -1,7 +1,43 @@
 // Ball database queries
 import { prisma } from "@/lib/db";
-import type { Ball } from "@/types/ball";
-import type { Prisma } from "@prisma/client";
+import type { Ball, RetailerLink } from "@/types/ball";
+import type { Prisma, Ball as PrismaBall } from "@prisma/client";
+
+/**
+ * Convert Prisma Ball record to API Ball type.
+ * Only needs Decimal→number for pricing and Json[]→RetailerLink[] for productUrls.
+ * All enum fields (driverSpin, ironSpin, etc.) are structurally compatible.
+ */
+function convertBall(ball: PrismaBall): Ball {
+  return {
+    id: ball.id,
+    name: ball.name,
+    manufacturer: ball.manufacturer,
+    modelYear: ball.modelYear,
+    description: ball.description,
+    construction: ball.construction,
+    coverMaterial: ball.coverMaterial,
+    layers: ball.layers,
+    compression: ball.compression,
+    driverSpin: ball.driverSpin,
+    ironSpin: ball.ironSpin,
+    wedgeSpin: ball.wedgeSpin,
+    launchProfile: ball.launchProfile,
+    feelRating: ball.feelRating,
+    durability: ball.durability,
+    skillLevel: ball.skillLevel,
+    pricePerDozen: Number(ball.pricePerDozen),
+    availableColors: ball.availableColors,
+    inStock: ball.inStock,
+    discontinued: ball.discontinued,
+    optimalTemp: ball.optimalTemp,
+    coldSuitability: ball.coldSuitability,
+    imageUrl: ball.imageUrl,
+    manufacturerUrl: ball.manufacturerUrl,
+    productUrls: ball.productUrls as unknown as RetailerLink[],
+    slug: ball.slug,
+  };
+}
 
 export interface BallFilters {
   manufacturer?: string;
@@ -124,22 +160,14 @@ export async function getAllBalls(
     prisma.ball.count({ where }),
   ]);
 
-  // Convert Prisma result to Ball type
+  // Convert Prisma Decimal to number for price
   const convertedBalls = balls.map(ball => ({
     ...ball,
     pricePerDozen: Number(ball.pricePerDozen),
-    spinProfile: {
-      driver: ball.driverSpin.toLowerCase() as "low" | "mid" | "high",
-      iron: ball.ironSpin.toLowerCase() as "low" | "mid" | "high",
-      wedge: ball.wedgeSpin.toLowerCase() as "low" | "mid" | "high",
-    },
-    launchCharacteristic: ball.launchProfile.toLowerCase() as "low" | "mid" | "high",
-    feelRating: ball.feelRating.toLowerCase().replace("_", "_") as Ball["feelRating"],
-    image: ball.imageUrl,
   }));
 
   return {
-    balls: convertedBalls as unknown as Ball[],
+    balls: convertedBalls as Ball[],
     total,
     page,
     limit,
@@ -159,27 +187,7 @@ export async function getBallById(id: string): Promise<Ball | null> {
     return null;
   }
 
-  // Convert Prisma types to Ball type
-  return {
-    ...ball,
-    pricePerDozen: Number(ball.pricePerDozen),
-    msrp: Number(ball.msrp),
-    spinProfile: {
-      driver: ball.driverSpin.toLowerCase() as "low" | "mid" | "high",
-      iron: ball.ironSpin.toLowerCase() as "low" | "mid" | "high",
-      wedge: ball.wedgeSpin.toLowerCase() as "low" | "mid" | "high",
-    },
-    launchCharacteristic: ball.launchProfile.toLowerCase() as "low" | "mid" | "high",
-    feelRating: ball.feelRating.toLowerCase().replace("_", "_") as Ball["feelRating"],
-    image: ball.imageUrl,
-    temperaturePerformance: {
-      optimal: ball.optimalTemp.toLowerCase() as "warm" | "moderate" | "cold" | "all",
-      coldSuitability: ball.coldSuitability,
-    },
-    targetHandicap: ball.targetHandicapMin && ball.targetHandicapMax
-      ? `${ball.targetHandicapMin}-${ball.targetHandicapMax}`
-      : "All",
-  } as unknown as Ball;
+  return convertBall(ball);
 }
 
 /**
@@ -194,27 +202,7 @@ export async function getBallsByIds(ids: string[]): Promise<Ball[]> {
     },
   });
 
-  // Convert Prisma types to Ball type
-  return balls.map(ball => ({
-    ...ball,
-    pricePerDozen: Number(ball.pricePerDozen),
-    msrp: Number(ball.msrp),
-    spinProfile: {
-      driver: ball.driverSpin.toLowerCase() as "low" | "mid" | "high",
-      iron: ball.ironSpin.toLowerCase() as "low" | "mid" | "high",
-      wedge: ball.wedgeSpin.toLowerCase() as "low" | "mid" | "high",
-    },
-    launchCharacteristic: ball.launchProfile.toLowerCase() as "low" | "mid" | "high",
-    feelRating: ball.feelRating.toLowerCase().replace("_", "_") as Ball["feelRating"],
-    image: ball.imageUrl,
-    temperaturePerformance: {
-      optimal: ball.optimalTemp.toLowerCase() as "warm" | "moderate" | "cold" | "all",
-      coldSuitability: ball.coldSuitability,
-    },
-    targetHandicap: ball.targetHandicapMin && ball.targetHandicapMax
-      ? `${ball.targetHandicapMin}-${ball.targetHandicapMax}`
-      : "All",
-  })) as unknown as Ball[];
+  return balls.map(convertBall);
 }
 
 /**
@@ -269,19 +257,11 @@ export async function searchBalls(
     },
   });
 
-  // Convert Prisma result to Ball type
+  // Convert Prisma Decimal to number for price
   return balls.map(ball => ({
     ...ball,
     pricePerDozen: Number(ball.pricePerDozen),
-    spinProfile: {
-      driver: ball.driverSpin.toLowerCase() as "low" | "mid" | "high",
-      iron: ball.ironSpin.toLowerCase() as "low" | "mid" | "high",
-      wedge: ball.wedgeSpin.toLowerCase() as "low" | "mid" | "high",
-    },
-    launchCharacteristic: ball.launchProfile.toLowerCase() as "low" | "mid" | "high",
-    feelRating: ball.feelRating.toLowerCase().replace("_", "_") as Ball["feelRating"],
-    image: ball.imageUrl,
-  })) as unknown as Ball[];
+  })) as Ball[];
 }
 
 /**
@@ -295,25 +275,5 @@ export async function getAllBallsForMatching(): Promise<Ball[]> {
     },
   });
 
-  // Convert Prisma types to Ball type
-  return balls.map(ball => ({
-    ...ball,
-    pricePerDozen: Number(ball.pricePerDozen),
-    msrp: Number(ball.msrp),
-    spinProfile: {
-      driver: ball.driverSpin.toLowerCase() as "low" | "mid" | "high",
-      iron: ball.ironSpin.toLowerCase() as "low" | "mid" | "high",
-      wedge: ball.wedgeSpin.toLowerCase() as "low" | "mid" | "high",
-    },
-    launchCharacteristic: ball.launchProfile.toLowerCase() as "low" | "mid" | "high",
-    feelRating: ball.feelRating.toLowerCase().replace("_", "_") as Ball["feelRating"],
-    image: ball.imageUrl,
-    temperaturePerformance: {
-      optimal: ball.optimalTemp.toLowerCase() as "warm" | "moderate" | "cold" | "all",
-      coldSuitability: ball.coldSuitability,
-    },
-    targetHandicap: ball.targetHandicapMin && ball.targetHandicapMax
-      ? `${ball.targetHandicapMin}-${ball.targetHandicapMax}`
-      : "All",
-  })) as unknown as Ball[];
+  return balls.map(convertBall);
 }

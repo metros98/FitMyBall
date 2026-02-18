@@ -5,9 +5,10 @@ import type {
   Recommendation,
   AlternativeRecommendation,
   SeasonalPick,
-  CategoryScores,
 } from "@/types/recommendation";
-import type { Prisma } from "@prisma/client";
+import { getMatchTier } from "@/types/recommendation";
+import type { Ball, RetailerLink } from "@/types/ball";
+import type { Prisma, Ball as PrismaBall } from "@prisma/client";
 
 export interface CreateRecommendationData {
   quizSessionId: string;
@@ -28,39 +29,57 @@ export interface CreateRecommendationData {
   } | null;
 }
 
-// Store metadata in recommendation as JSON since schema doesn't have these fields
-interface RecommendationMetadata {
-  confidenceLevel: string;
-  confidenceMessage: string;
-  tradeOffCallout: string | null;
-  alternatives: CreateRecommendationData["alternatives"];
-  seasonalPicks: CreateRecommendationData["seasonalPicks"];
+/**
+ * Convert a Prisma Ball record to the API Ball type.
+ */
+function convertPrismaBall(ball: PrismaBall): Ball {
+  return {
+    id: ball.id,
+    name: ball.name,
+    manufacturer: ball.manufacturer,
+    modelYear: ball.modelYear,
+    description: ball.description,
+    construction: ball.construction,
+    coverMaterial: ball.coverMaterial,
+    layers: ball.layers,
+    compression: ball.compression,
+    driverSpin: ball.driverSpin,
+    ironSpin: ball.ironSpin,
+    wedgeSpin: ball.wedgeSpin,
+    launchProfile: ball.launchProfile,
+    feelRating: ball.feelRating,
+    durability: ball.durability,
+    skillLevel: ball.skillLevel,
+    pricePerDozen: Number(ball.pricePerDozen),
+    availableColors: ball.availableColors,
+    inStock: ball.inStock,
+    discontinued: ball.discontinued,
+    optimalTemp: ball.optimalTemp,
+    coldSuitability: ball.coldSuitability,
+    imageUrl: ball.imageUrl,
+    manufacturerUrl: ball.manufacturerUrl,
+    productUrls: ball.productUrls as unknown as RetailerLink[],
+    slug: ball.slug,
+  };
 }
 
 /**
- * Create a new recommendation record with related balls
- * Note: The schema doesn't have fields for all recommendation data,
- * so we store metadata in the explanation field of the first ball temporarily.
- * This should be fixed in a schema migration later.
+ * Create a new recommendation record with related balls.
+ * Stores metadata (confidence, alternatives, seasonal) in proper schema fields.
  */
 export async function createRecommendation(
   data: CreateRecommendationData
 ): Promise<string> {
-  // Store metadata with the first recommendation ball
-  const metadata: RecommendationMetadata = {
-    confidenceLevel: data.confidenceLevel,
-    confidenceMessage: data.confidenceMessage,
-    tradeOffCallout: data.tradeOffCallout,
-    alternatives: data.alternatives,
-    seasonalPicks: data.seasonalPicks,
-  };
-
   const recommendation = await prisma.recommendation.create({
     data: {
       quizSessionId: data.quizSessionId,
       userId: data.userId,
-      algorithmVersion: "1.1", // PRD v1.1
-      // Create recommendation balls (top 5)
+      algorithmVersion: "1.1",
+      confidenceLevel: data.confidenceLevel,
+      confidenceMessage: data.confidenceMessage,
+      tradeOffCallout: data.tradeOffCallout,
+      alternatives: data.alternatives as unknown as Prisma.InputJsonValue,
+      seasonalPicks: data.seasonalPicks as unknown as Prisma.InputJsonValue,
       recommendedBalls: {
         create: data.recommendations.map((rec, index) => ({
           ballId: rec.ballId,
@@ -71,10 +90,8 @@ export async function createRecommendation(
           preferencesScore: rec.categoryScores.preferences,
           conditionsScore: rec.categoryScores.playingConditions,
           currentBallScore: rec.categoryScores.currentBallAnalysis,
-          // Store explanation with metadata in first ball
-          explanation: (index === 0
-            ? { ...rec.explanation, _metadata: metadata }
-            : rec.explanation) as unknown as Prisma.InputJsonValue,
+          headline: rec.headline,
+          explanation: rec.explanation as unknown as Prisma.InputJsonValue,
         })),
       },
     },
@@ -83,12 +100,18 @@ export async function createRecommendation(
   return recommendation.id;
 }
 
+/** Return type for recommendation queries that include ball data */
+export interface RecommendationWithBalls {
+  response: RecommendationResponse;
+  balls: Map<string, Ball>;
+}
+
 /**
- * Get recommendation by session ID with full details
+ * Get recommendation by session ID with full details including ball data.
  */
 export async function getRecommendationBySessionId(
   sessionId: string
-): Promise<RecommendationResponse | null> {
+): Promise<RecommendationWithBalls | null> {
   const recommendation = await prisma.recommendation.findUnique({
     where: {
       quizSessionId: sessionId,
@@ -109,56 +132,15 @@ export async function getRecommendationBySessionId(
     return null;
   }
 
-  // Extract metadata from first ball's explanation
-  const firstBallExplanation = recommendation.recommendedBalls[0]?.explanation as any;
-  const metadata = firstBallExplanation?._metadata as RecommendationMetadata | undefined;
-
-  // Convert to RecommendationResponse format
-  const recommendations: Recommendation[] = recommendation.recommendedBalls.map(
-    (rb) => {
-      const explanation = rb.explanation as any;
-      const { _metadata, ...cleanExplanation } = explanation;
-
-      return {
-        ballId: rb.ballId,
-        ballName: rb.ball.name,
-        manufacturer: rb.ball.manufacturer,
-        matchPercentage: rb.matchScore,
-        matchTier: determineMatchTier(rb.matchScore),
-        categoryScores: {
-          swingSpeedMatch: rb.swingSpeedScore,
-          performancePriorities: rb.performanceScore,
-          preferences: rb.preferencesScore,
-          playingConditions: rb.conditionsScore,
-          currentBallAnalysis: rb.currentBallScore,
-        },
-        explanation: cleanExplanation,
-        headline: generateHeadline(rb.ball.name, rb.matchScore),
-      };
-    }
-  );
-
-  return {
-    confidenceLevel: (metadata?.confidenceLevel || "medium") as RecommendationResponse["confidenceLevel"],
-    confidenceMessage: metadata?.confidenceMessage || "Good match based on your preferences",
-    recommendations,
-    tradeOffCallout: metadata?.tradeOffCallout || null,
-    alternatives: metadata?.alternatives || {
-      stepDown: null,
-      stepUp: null,
-      bestValue: null,
-      moneyNoObject: null,
-    },
-    seasonalPicks: metadata?.seasonalPicks || null,
-  };
+  return convertToResponse(recommendation);
 }
 
 /**
- * Get recommendation by ID
+ * Get recommendation by ID with full details including ball data.
  */
 export async function getRecommendationById(
   id: string
-): Promise<RecommendationResponse | null> {
+): Promise<RecommendationWithBalls | null> {
   const recommendation = await prisma.recommendation.findUnique({
     where: {
       id,
@@ -179,22 +161,35 @@ export async function getRecommendationById(
     return null;
   }
 
-  // Extract metadata from first ball's explanation
-  const firstBallExplanation = recommendation.recommendedBalls[0]?.explanation as any;
-  const metadata = firstBallExplanation?._metadata as RecommendationMetadata | undefined;
+  return convertToResponse(recommendation);
+}
 
-  // Convert to RecommendationResponse format
+/**
+ * Convert Prisma recommendation record to API response with ball data.
+ */
+function convertToResponse(
+  recommendation: Prisma.RecommendationGetPayload<{
+    include: {
+      recommendedBalls: {
+        include: { ball: true };
+      };
+    };
+  }>
+): RecommendationWithBalls {
+  const balls = new Map<string, Ball>();
+
   const recommendations: Recommendation[] = recommendation.recommendedBalls.map(
     (rb) => {
-      const explanation = rb.explanation as any;
-      const { _metadata, ...cleanExplanation } = explanation;
+      // Convert and collect ball data
+      const ball = convertPrismaBall(rb.ball);
+      balls.set(ball.id, ball);
 
       return {
         ballId: rb.ballId,
         ballName: rb.ball.name,
         manufacturer: rb.ball.manufacturer,
         matchPercentage: rb.matchScore,
-        matchTier: determineMatchTier(rb.matchScore),
+        matchTier: getMatchTier(rb.matchScore),
         categoryScores: {
           swingSpeedMatch: rb.swingSpeedScore,
           performancePriorities: rb.performanceScore,
@@ -202,25 +197,30 @@ export async function getRecommendationById(
           playingConditions: rb.conditionsScore,
           currentBallAnalysis: rb.currentBallScore,
         },
-        explanation: cleanExplanation,
-        headline: generateHeadline(rb.ball.name, rb.matchScore),
+        explanation: rb.explanation as unknown as Recommendation["explanation"],
+        headline: rb.headline,
       };
     }
   );
 
-  return {
-    confidenceLevel: (metadata?.confidenceLevel || "medium") as RecommendationResponse["confidenceLevel"],
-    confidenceMessage: metadata?.confidenceMessage || "Good match based on your preferences",
+  const alternatives = recommendation.alternatives as unknown as RecommendationResponse["alternatives"] | null;
+  const seasonalPicks = recommendation.seasonalPicks as unknown as RecommendationResponse["seasonalPicks"];
+
+  const response: RecommendationResponse = {
+    confidenceLevel: recommendation.confidenceLevel as RecommendationResponse["confidenceLevel"],
+    confidenceMessage: recommendation.confidenceMessage,
     recommendations,
-    tradeOffCallout: metadata?.tradeOffCallout || null,
-    alternatives: metadata?.alternatives || {
+    tradeOffCallout: recommendation.tradeOffCallout,
+    alternatives: alternatives ?? {
       stepDown: null,
       stepUp: null,
       bestValue: null,
       moneyNoObject: null,
     },
-    seasonalPicks: metadata?.seasonalPicks || null,
+    seasonalPicks: seasonalPicks ?? null,
   };
+
+  return { response, balls };
 }
 
 /**
@@ -332,23 +332,4 @@ export async function saveRecommendationToUser(
   });
 
   return { success: true, recommendationId: updated.id };
-}
-
-/**
- * Helper: Determine match tier from score
- */
-function determineMatchTier(score: number): Recommendation["matchTier"] {
-  if (score >= 80) return "strong";
-  if (score >= 65) return "good";
-  return "moderate";
-}
-
-/**
- * Helper: Generate headline from ball name and score
- */
-function generateHeadline(ballName: string, score: number): string {
-  if (score >= 90) return `Excellent match for your game`;
-  if (score >= 80) return `Great fit based on your preferences`;
-  if (score >= 70) return `Good option to consider`;
-  return `Solid choice with some trade-offs`;
 }

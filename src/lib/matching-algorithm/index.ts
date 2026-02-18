@@ -1,5 +1,5 @@
 import type { Ball, QuizData, MatchResult, AlgorithmOutput, CategoryScores } from "./types";
-import type { MatchTier } from "@/types/recommendation";
+import { getMatchTier } from "@/types/recommendation";
 import { calculateWeights } from "./weights";
 import { resolveBallSpeed } from "./ball-speed";
 import {
@@ -27,12 +27,6 @@ import {
 const MIN_DISPLAY_THRESHOLD = 50;
 const MIN_RESULTS = 3;
 const MAX_RESULTS = 5;
-
-function getMatchTier(score: number): MatchTier {
-  if (score >= 75) return "strong";
-  if (score >= 60) return "good";
-  return "moderate";
-}
 
 /**
  * Scores a single ball against the user's quiz data.

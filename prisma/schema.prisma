@@ -256,6 +256,11 @@ model Recommendation {
 
   // Algorithm metadata
   algorithmVersion  String               @default("1.0")
+  confidenceLevel   String               @default("medium")  // "high" | "medium" | "low"
+  confidenceMessage String               @default("")
+  tradeOffCallout   String?
+  alternatives      Json?                // { stepDown, stepUp, bestValue, moneyNoObject }
+  seasonalPicks     Json?                // { warmWeather, coldWeather }
 
   // User actions
   viewed            Boolean              @default(false)
@@ -285,6 +290,9 @@ model RecommendationBall {
   preferencesScore  Float
   conditionsScore   Float
   currentBallScore  Float
+
+  // Headline (from algorithm)
+  headline          String         @default("")
 
   // Explanation (stored as JSON)
   explanation       Json           // { whyThisMatches: [], whatYouGain: [], tradeoffs: [] }

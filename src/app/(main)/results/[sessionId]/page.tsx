@@ -11,8 +11,9 @@ import { RecommendationCard } from "@/components/results/RecommendationCard";
 import { SecondaryBallCard } from "@/components/results/SecondaryBallCard";
 import { AlternativesSection } from "@/components/results/AlternativesSection";
 import { SeasonalSection } from "@/components/results/SeasonalSection";
-import type { RecommendationDetailResponse } from "@/types/api";
-import type { Ball } from "@/types/ball";
+import { getQuizSessionById, isSessionExpired } from "@/lib/db/queries/quiz-sessions";
+import { getRecommendationBySessionId } from "@/lib/db/queries/recommendations";
+import { getBallsByIds } from "@/lib/db/queries/balls";
 import { Share2, Mail, RotateCcw, Save, AlertCircle, CheckCircle, Info } from "lucide-react";
 
 interface ResultsPageProps {
@@ -21,90 +22,46 @@ interface ResultsPageProps {
   }>;
 }
 
-async function getRecommendationData(sessionId: string): Promise<{
-  data: RecommendationDetailResponse;
-  balls: Map<string, Ball>;
-} | null> {
-  try {
-    // Fetch recommendation data from API
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-    const url = `${baseUrl}/api/recommendations/${sessionId}`;
-    
-    const res = await fetch(url, {
-      cache: "no-store", // Always get fresh data
-    });
-    
-    if (!res.ok) {
-      return null;
-    }
-
-    const data: RecommendationDetailResponse = await res.json();
-
-    // Collect all ball IDs we need to fetch
-    const ballIds = new Set<string>();
-    data.recommendation.recommendations.forEach((rec) => ballIds.add(rec.ballId));
-    
-    if (data.recommendation.alternatives.bestValue) {
-      ballIds.add(data.recommendation.alternatives.bestValue.ballId);
-    }
-    if (data.recommendation.alternatives.stepUp) {
-      ballIds.add(data.recommendation.alternatives.stepUp.ballId);
-    }
-    if (data.recommendation.alternatives.stepDown) {
-      ballIds.add(data.recommendation.alternatives.stepDown.ballId);
-    }
-    if (data.recommendation.alternatives.moneyNoObject) {
-      ballIds.add(data.recommendation.alternatives.moneyNoObject.ballId);
-    }
-    if (data.recommendation.seasonalPicks?.warmWeather) {
-      ballIds.add(data.recommendation.seasonalPicks.warmWeather.ballId);
-    }
-    if (data.recommendation.seasonalPicks?.coldWeather) {
-      ballIds.add(data.recommendation.seasonalPicks.coldWeather.ballId);
-    }
-
-    // Fetch all ball details in parallel
-    const ballPromises = Array.from(ballIds).map(async (id) => {
-      const ballUrl = `${baseUrl}/api/balls/${id}`;
-      const ballRes = await fetch(ballUrl, {
-        cache: "force-cache", // Ball data can be cached
-      });
-      if (ballRes.ok) {
-        const response = await ballRes.json() as { ball: Ball };
-        return response.ball;
-      }
-      return null;
-    });
-
-    const ballsArray = await Promise.all(ballPromises);
-    const balls = new Map<string, Ball>();
-    ballsArray.forEach((ball) => {
-      if (ball) {
-        balls.set(ball.id, ball);
-      }
-    });
-
-    return { data, balls };
-  } catch (error) {
-    console.error("Error fetching recommendation data:", error);
-    return null;
-  }
-}
-
 export default async function ResultsPage({ params }: ResultsPageProps) {
   const { sessionId } = await params;
-  
-  const result = await getRecommendationData(sessionId);
 
+  // Direct DB calls — no HTTP self-fetch
+  const session = await getQuizSessionById(sessionId);
+  if (!session) {
+    notFound();
+  }
+
+  if (isSessionExpired(session.createdAt)) {
+    notFound();
+  }
+
+  const result = await getRecommendationBySessionId(sessionId);
   if (!result) {
     notFound();
   }
 
-  const { data, balls } = result;
-  const { recommendation } = data;
+  const { response: recommendation, balls } = result;
+
+  // Fetch any additional balls needed for alternatives/seasonal picks
+  // that aren't already in the recommendation balls map
+  const extraBallIds = [
+    recommendation.alternatives.bestValue?.ballId,
+    recommendation.alternatives.stepUp?.ballId,
+    recommendation.alternatives.stepDown?.ballId,
+    recommendation.alternatives.moneyNoObject?.ballId,
+    recommendation.seasonalPicks?.warmWeather?.ballId,
+    recommendation.seasonalPicks?.coldWeather?.ballId,
+  ].filter((id): id is string => id != null && !balls.has(id));
+
+  if (extraBallIds.length > 0) {
+    const extraBalls = await getBallsByIds(extraBallIds);
+    for (const ball of extraBalls) {
+      balls.set(ball.id, ball);
+    }
+  }
+
   const topRecommendation = recommendation.recommendations[0];
   const secondaryRecommendations = recommendation.recommendations.slice(1, 5);
-
   const topBall = balls.get(topRecommendation.ballId);
 
   if (!topBall) {

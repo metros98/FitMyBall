@@ -20,21 +20,14 @@ export async function createQuizSession(
   const expiresAt = new Date();
   expiresAt.setDate(expiresAt.getDate() + 30);
 
-  // Build session data - only include userId for authenticated users
-  const sessionData: any = {
-    ipAddress: data.ipAddress,
-    quizData: data.quizData as unknown as Prisma.InputJsonValue,
-    expiresAt,
-    completed: true,
-  };
-
-  // Add userId only if provided (authenticated users)
-  if (data.userId) {
-    sessionData.userId = data.userId;
-  }
-
   const session = await prisma.quizSession.create({
-    data: sessionData,
+    data: {
+      quizData: data.quizData as unknown as Prisma.InputJsonValue,
+      ipAddress: data.ipAddress,
+      expiresAt,
+      completed: true,
+      ...(data.userId ? { user: { connect: { id: data.userId } } } : {}),
+    },
   });
 
   return session.id;

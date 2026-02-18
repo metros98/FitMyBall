@@ -56,8 +56,8 @@ export type RoundsPerYear = "<10" | "10-50" | "50-100" | "100+";
 export interface QuizData {
   // Step 1: Background & Priorities
   currentBall?: {
-    brand: string;
-    model: string;
+    brand?: string;
+    model?: string;
   };
   handicap: HandicapRange;
   roundsPerYear: RoundsPerYear;

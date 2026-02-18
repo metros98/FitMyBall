@@ -3,6 +3,14 @@
 export type ConfidenceLevel = "high" | "medium" | "low";
 export type MatchTier = "strong" | "good" | "moderate";
 
+export const MATCH_TIER_THRESHOLDS = { strong: 75, good: 60 } as const;
+
+export function getMatchTier(score: number): MatchTier {
+  if (score >= MATCH_TIER_THRESHOLDS.strong) return "strong";
+  if (score >= MATCH_TIER_THRESHOLDS.good) return "good";
+  return "moderate";
+}
+
 export interface CategoryScores {
   swingSpeedMatch: number;
   performancePriorities: number;

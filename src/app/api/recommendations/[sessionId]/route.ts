@@ -35,8 +35,8 @@ export async function GET(
     }
 
     // Get recommendation data
-    const recommendation = await getRecommendationBySessionId(sessionId);
-    if (!recommendation) {
+    const result = await getRecommendationBySessionId(sessionId);
+    if (!result) {
       return HttpError.notFound("Recommendation data");
     }
 
@@ -44,7 +44,7 @@ export async function GET(
     const response: RecommendationDetailResponse = {
       sessionId: session.id,
       quizData: session.quizData,
-      recommendation,
+      recommendation: result.response,
       createdAt: session.createdAt.toISOString(),
     };
 

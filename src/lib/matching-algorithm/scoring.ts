@@ -435,11 +435,15 @@ export function scoreCurrentBall(
     return 0;
   }
 
+  const { brand, model } = quizData.currentBall;
+  if (!brand || !model || brand === "other") {
+    return 0;
+  }
+
   const currentBallData = allBalls.find(
     (b) =>
-      b.name.toLowerCase() === quizData.currentBall!.model.toLowerCase() &&
-      b.manufacturer.toLowerCase() ===
-        quizData.currentBall!.brand.toLowerCase(),
+      b.name.toLowerCase() === model.toLowerCase() &&
+      b.manufacturer.toLowerCase() === brand.toLowerCase(),
   );
 
   // Current ball not in database — skip analysis
