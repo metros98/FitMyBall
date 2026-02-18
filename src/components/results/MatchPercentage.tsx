@@ -1,8 +1,12 @@
+"use client";
+
 /**
  * MatchPercentage - Circular progress indicator for match score
  * Apple Watch activity ring style with tier-based coloring
+ * Animates count-up from 0 on mount (600ms, ease-out-cubic)
  */
 
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import type { MatchTier } from "@/types/recommendation";
 
@@ -39,6 +43,11 @@ const sizeClasses = {
   lg: { container: "w-32 h-32", text: "text-4xl", label: "text-base" },
 };
 
+// Ease-out cubic: decelerates toward the end
+function easeOutCubic(t: number): number {
+  return 1 - Math.pow(1 - t, 3);
+}
+
 export function MatchPercentage({
   percentage,
   tier,
@@ -46,9 +55,33 @@ export function MatchPercentage({
   showLabel = false,
   className,
 }: MatchPercentageProps) {
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    const duration = 600;
+    let startTime: number | null = null;
+    let frameId: number;
+
+    function animate(timestamp: number) {
+      if (startTime === null) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutCubic(progress);
+
+      setDisplayValue(Math.round(easedProgress * percentage));
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(animate);
+      }
+    }
+
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
+  }, [percentage]);
+
   const colors = tierColors[tier];
   const sizes = sizeClasses[size];
-  
+
   // Circle SVG properties
   const circleSize = size === "sm" ? 64 : size === "md" ? 96 : 128;
   const strokeWidth = size === "sm" ? 6 : size === "md" ? 8 : 10;
@@ -57,7 +90,10 @@ export function MatchPercentage({
   const offset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className={cn("flex flex-col items-center gap-2", className)}>
+    <div
+      className={cn("flex flex-col items-center gap-2", className)}
+      aria-label={`${Math.round(percentage)}% match score`}
+    >
       <div className={cn("relative", sizes.container)}>
         {/* Background circle */}
         <svg
@@ -99,7 +135,7 @@ export function MatchPercentage({
         {/* Percentage text */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span className={cn("font-bold", colors.text, sizes.text)}>
-            {Math.round(percentage)}%
+            {displayValue}%
           </span>
         </div>
       </div>

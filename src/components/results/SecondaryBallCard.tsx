@@ -34,9 +34,16 @@ export function SecondaryBallCard({
       <div className="p-4 space-y-4">
         {/* Rank badge */}
         <div className="flex items-start justify-between">
-          <Badge variant="outline" className="font-mono text-xs">
-            #{rank}
-          </Badge>
+          <div className="flex flex-wrap gap-1.5">
+            <Badge variant="outline" className="font-mono text-xs">
+              #{rank}
+            </Badge>
+            {ball.discontinued && (
+              <Badge variant="outline" className="text-xs border-amber-500 text-amber-500">
+                Discontinued
+              </Badge>
+            )}
+          </div>
           <MatchPercentage
             percentage={recommendation.matchPercentage}
             tier={recommendation.matchTier}

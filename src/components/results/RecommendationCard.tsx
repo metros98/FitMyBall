@@ -42,12 +42,19 @@ export function RecommendationCard({
         {/* Header with badge and match percentage */}
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
-            {isTopPick && (
-              <Badge className="bg-green-600 hover:bg-green-600 text-white gap-1.5">
-                <Trophy className="w-3.5 h-3.5" />
-                Best Match
-              </Badge>
-            )}
+            <div className="flex flex-wrap gap-2">
+              {isTopPick && (
+                <Badge className="bg-green-600 hover:bg-green-600 text-white gap-1.5">
+                  <Trophy className="w-3.5 h-3.5" />
+                  Best Match
+                </Badge>
+              )}
+              {ball.discontinued && (
+                <Badge variant="outline" className="border-amber-500 text-amber-500">
+                  Discontinued
+                </Badge>
+              )}
+            </div>
             <h2 className="text-2xl font-bold">{recommendation.headline}</h2>
           </div>
 
@@ -227,7 +234,7 @@ export function RecommendationCard({
               View Full Details
             </Button>
           )}
-          {ball.productUrls.length > 0 && (
+          {ball.productUrls.length > 0 && !ball.discontinued && (
             <Button
               variant={isTopPick ? "default" : "outline"}
               size="sm"
