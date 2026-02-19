@@ -10,6 +10,7 @@ import { MatchPercentage } from "./MatchPercentage";
 import { PerformanceBreakdown } from "./PerformanceBreakdown";
 import type { Recommendation } from "@/types/recommendation";
 import type { Ball } from "@/types/ball";
+import { FavoriteButton } from "@/components/common/favorite-button";
 import { Trophy, ShoppingCart, BarChart3 } from "lucide-react";
 import Image from "next/image";
 
@@ -58,11 +59,14 @@ export function RecommendationCard({
             <h2 className="text-2xl font-bold">{recommendation.headline}</h2>
           </div>
 
-          <MatchPercentage
-            percentage={recommendation.matchPercentage}
-            tier={recommendation.matchTier}
-            size="lg"
-          />
+          <div className="flex items-center gap-2">
+            <FavoriteButton ballId={ball.id} className="text-white hover:text-red-400" />
+            <MatchPercentage
+              percentage={recommendation.matchPercentage}
+              tier={recommendation.matchTier}
+              size="lg"
+            />
+          </div>
         </div>
 
         {/* Ball image and details */}

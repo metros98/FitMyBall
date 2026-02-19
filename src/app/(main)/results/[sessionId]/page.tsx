@@ -15,7 +15,8 @@ import { ResultsStagger } from "@/components/results/ResultsStagger";
 import { getQuizSessionById, isSessionExpired } from "@/lib/db/queries/quiz-sessions";
 import { getRecommendationBySessionId } from "@/lib/db/queries/recommendations";
 import { getBallsByIds } from "@/lib/db/queries/balls";
-import { Share2, Mail, RotateCcw, Save, AlertCircle, CheckCircle, Info, Clock } from "lucide-react";
+import { SaveResultsButton } from "@/components/results/save-results-button";
+import { Share2, Mail, RotateCcw, AlertCircle, CheckCircle, Info, Clock } from "lucide-react";
 import Link from "next/link";
 
 interface ResultsPageProps {
@@ -164,10 +165,7 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
 
             {/* Action buttons */}
             <div className="flex flex-wrap gap-3">
-              <Button variant="outline" size="sm">
-                <Save className="w-4 h-4 mr-2" />
-                Save Results
-              </Button>
+              <SaveResultsButton sessionId={sessionId} />
               <Button variant="outline" size="sm">
                 <Share2 className="w-4 h-4 mr-2" />
                 Share Link

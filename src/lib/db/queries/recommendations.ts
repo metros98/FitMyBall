@@ -274,6 +274,7 @@ export async function getUserRecommendationHistory(
     id: rec.id,
     createdAt: rec.createdAt.toISOString(),
     topBallName: rec.recommendedBalls[0]?.ball.name ?? "Unknown",
+    topBallMatchScore: rec.recommendedBalls[0]?.matchScore ?? 0,
     sessionId: rec.quizSession.id,
   }));
 
