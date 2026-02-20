@@ -40,6 +40,7 @@ function convertBall(ball: PrismaBall): Ball {
 }
 
 export interface BallFilters {
+  q?: string;
   manufacturer?: string;
   minPrice?: number;
   maxPrice?: number;
@@ -82,6 +83,13 @@ export async function getAllBalls(
   const where: Prisma.BallWhereInput = {
     inStock: true, // Only show in-stock balls
   };
+
+  if (filters?.q) {
+    where.OR = [
+      { name: { contains: filters.q, mode: "insensitive" } },
+      { manufacturer: { contains: filters.q, mode: "insensitive" } },
+    ];
+  }
 
   if (filters?.manufacturer) {
     where.manufacturer = {

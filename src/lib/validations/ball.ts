@@ -5,6 +5,7 @@ import { z } from "zod";
  * Schema for ball query parameters (GET /api/balls)
  */
 export const ballQuerySchema = z.object({
+  q: z.string().min(2, "Search query must be at least 2 characters").optional(),
   manufacturer: z.string().optional(),
   minPrice: z.coerce.number().min(0).optional(),
   maxPrice: z.coerce.number().min(0).optional(),

@@ -7,7 +7,7 @@ import type { ApiError } from "@/types/api";
  * Create a successful API response
  */
 export function apiSuccess<T>(data: T, status: number = 200): NextResponse {
-  return NextResponse.json(data, {
+  return NextResponse.json({ data }, {
     status,
     headers: {
       "Content-Type": "application/json",

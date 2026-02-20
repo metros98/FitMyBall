@@ -20,6 +20,7 @@ export async function GET(request: NextRequest) {
 
     // Extract filters, pagination, and sorting
     const filters = {
+      q: query.q,
       manufacturer: query.manufacturer,
       minPrice: query.minPrice,
       maxPrice: query.maxPrice,

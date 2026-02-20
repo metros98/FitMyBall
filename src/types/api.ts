@@ -50,6 +50,7 @@ export interface PaginatedResponse<T> {
  * Ball query filters for GET /api/balls
  */
 export interface BallQueryFilters {
+  q?: string;
   manufacturer?: string;
   minPrice?: number;
   maxPrice?: number;

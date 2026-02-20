@@ -55,3 +55,6 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+
+# Windows reserved device names
+nul
