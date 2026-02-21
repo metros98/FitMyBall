@@ -162,3 +162,42 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Print styles for Compare page */
+@media print {
+  /* Hide header, nav, and interactive elements */
+  header,
+  nav,
+  .compare-bar,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  /* Hide action buttons */
+  button,
+  [role="button"] {
+    display: none !important;
+  }
+
+  /* Preserve table structure */
+  table {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure good contrast for printing */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Remove shadows and borders for cleaner print */
+  .card,
+  [class*="shadow"] {
+    box-shadow: none !important;
+  }
+
+  /* Optimize spacing for print */
+  @page {
+    margin: 1cm;
+  }
+}

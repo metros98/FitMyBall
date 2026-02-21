@@ -28,29 +28,46 @@ async function main() {
   // ========================================
   // SEED GOLF BALLS
   // ========================================
+  //
+  // Ball data last updated: Feb 2026
+  // Source: master ball list (38 verified balls) + 12 legacy balls flagged for review
+  //
+  // FLAGGED LEGACY BALLS are marked with: // ⚠️ REVIEW: not in Feb 2026 master list
+  // These should be verified or removed in a future update.
+  //
+  // Index map for user interactions at the bottom of this file:
+  //   [0]  Titleist Pro V1
+  //   [9]  Callaway Chrome Soft
+  //   [20] Srixon Z-STAR
+  //   [10] Callaway Supersoft
+  // ========================================
 
   console.log('⛳ Creating golf balls...');
 
   const balls = await Promise.all([
-    // TITLEIST
+
+    // ─── TITLEIST ────────────────────────────────────────────────────────────
+    // [0] Titleist Pro V1
     prisma.ball.create({
       data: {
         name: 'Pro V1',
         manufacturer: 'Titleist',
         modelYear: 2024,
         slug: 'titleist-pro-v1',
-        description: 'The #1 ball in golf, delivering total performance with optimal flight and consistent spin.',
+        description: 'The #1 ball on Tour offering exceptional distance, control and short game spin.',
         construction: '3-piece',
         coverMaterial: 'Cast Urethane',
         layers: 3,
         compression: 90,
-        driverSpin: SpinLevel.LOW,
+        driverSpin: SpinLevel.MID,
         ironSpin: SpinLevel.MID,
         wedgeSpin: SpinLevel.HIGH,
         launchProfile: LaunchLevel.MID,
         feelRating: FeelLevel.SOFT,
-        durability: 4,
-        skillLevel: ['Advanced', 'Tour'],
+        durability: 3,
+        skillLevel: ['Tour', 'Advanced'],
+        targetHandicapMin: 0,
+        targetHandicapMax: 10,
         pricePerDozen: 54.99,
         msrp: 54.99,
         availableColors: ['White', 'Yellow'],
@@ -60,28 +77,31 @@ async function main() {
         imageUrl: null,
         imageUrls: [],
         manufacturerUrl: 'https://www.titleist.com/golf-balls/pro-v1',
-        productUrls: [],
+        productUrls: [{ retailer: 'Titleist', url: 'https://www.titleist.com/golf-balls/pro-v1', isAffiliate: false }],
       },
     }),
 
+    // [1] Titleist Pro V1x
     prisma.ball.create({
       data: {
         name: 'Pro V1x',
         manufacturer: 'Titleist',
         modelYear: 2024,
         slug: 'titleist-pro-v1x',
-        description: 'High flight, spin, and stopping power for players who prefer a firmer feel.',
+        description: 'High flight with low spin for distance and control.',
         construction: '4-piece',
         coverMaterial: 'Cast Urethane',
         layers: 4,
-        compression: 98,
-        driverSpin: SpinLevel.LOW,
-        ironSpin: SpinLevel.HIGH,
+        compression: 100,
+        driverSpin: SpinLevel.MID,
+        ironSpin: SpinLevel.MID_HIGH,
         wedgeSpin: SpinLevel.HIGH,
-        launchProfile: LaunchLevel.HIGH,
-        feelRating: FeelLevel.MEDIUM,
-        durability: 4,
-        skillLevel: ['Advanced', 'Tour'],
+        launchProfile: LaunchLevel.LOW_MID,
+        feelRating: FeelLevel.FIRM,
+        durability: 3,
+        skillLevel: ['Tour', 'Advanced'],
+        targetHandicapMin: 0,
+        targetHandicapMax: 10,
         pricePerDozen: 54.99,
         msrp: 54.99,
         availableColors: ['White', 'Yellow'],
@@ -91,7 +111,7 @@ async function main() {
         imageUrl: null,
         imageUrls: [],
         manufacturerUrl: 'https://www.titleist.com/golf-balls/pro-v1x',
-        productUrls: [],
+        productUrls: [{ retailer: 'Titleist', url: 'https://www.titleist.com/golf-balls/pro-v1x', isAffiliate: false }],
       },
     }),
 

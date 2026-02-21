@@ -35,6 +35,8 @@ export const PRICE_RANGE = { min: 15, max: 60 } as const;
 export const COMPRESSION_RANGE = { min: 30, max: 110 } as const;
 
 export const SORT_OPTIONS = [
+  { label: "Manufacturer (A–Z)", value: "manufacturer-asc", sortBy: "manufacturer", sortOrder: "asc" },
+  { label: "Manufacturer (Z–A)", value: "manufacturer-desc", sortBy: "manufacturer", sortOrder: "desc" },
   { label: "Name (A–Z)", value: "name-asc", sortBy: "name", sortOrder: "asc" },
   { label: "Name (Z–A)", value: "name-desc", sortBy: "name", sortOrder: "desc" },
   { label: "Price (Low–High)", value: "price-asc", sortBy: "price", sortOrder: "asc" },
@@ -92,7 +94,7 @@ export function parseFiltersFromSearchParams(
   }
 
   const sortBy = get("sortBy");
-  if (sortBy === "price" || sortBy === "compression" || sortBy === "name") {
+  if (sortBy === "price" || sortBy === "compression" || sortBy === "name" || sortBy === "manufacturer") {
     filters.sortBy = sortBy;
   }
 

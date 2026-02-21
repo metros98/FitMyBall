@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MatchPercentage } from "./MatchPercentage";
 import { FavoriteButton } from "@/components/common/favorite-button";
+import { CompareButton } from "@/components/compare/compare-button";
 import type { Recommendation } from "@/types/recommendation";
 import type { Ball } from "@/types/ball";
 import Image from "next/image";
@@ -45,8 +46,12 @@ export function SecondaryBallCard({
               </Badge>
             )}
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <FavoriteButton ballId={ball.id} />
+            <CompareButton
+              ball={{ id: ball.id, name: ball.name }}
+              variant="icon"
+            />
             <MatchPercentage
               percentage={recommendation.matchPercentage}
               tier={recommendation.matchTier}

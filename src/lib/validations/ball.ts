@@ -12,7 +12,7 @@ export const ballQuerySchema = z.object({
   compression: z.coerce.number().min(0).max(120).optional(),
   construction: z.string().optional(),
   color: z.string().optional(),
-  sortBy: z.enum(["price", "compression", "name"]).optional().default("name"),
+  sortBy: z.enum(["price", "compression", "name", "manufacturer"]).optional().default("name"),
   sortOrder: z.enum(["asc", "desc"]).optional().default("asc"),
   page: z.coerce.number().int().min(1).optional().default(1),
   limit: z.coerce.number().int().min(1).max(100).optional().default(20),
@@ -63,3 +63,31 @@ export type SaveRecommendationRequest = z.infer<typeof saveRecommendationSchema>
  * Schema for user ID parameter (CUID validation)
  */
 export const userIdSchema = z.string().cuid();
+
+/**
+ * Schema for ball comparison (GET /api/balls/compare)
+ * Validates comma-separated list of 2-4 ball CUIDs
+ */
+export const ballCompareSchema = z.object({
+  ids: z
+    .string()
+    .transform((val) => val.split(",").map((id) => id.trim()))
+    .pipe(
+      z
+        .array(z.string().cuid("Invalid ball ID format"))
+        .min(2, "At least 2 balls are required for comparison")
+        .max(4, "Maximum 4 balls can be compared at once")
+    ),
+});
+
+export type BallCompareQuery = z.infer<typeof ballCompareSchema>;
+
+/**
+ * Schema for ball search (GET /api/balls/search)
+ */
+export const ballSearchSchema = z.object({
+  q: z.string().min(2, "Search query must be at least 2 characters"),
+  limit: z.coerce.number().int().min(1).max(20).optional().default(8),
+});
+
+export type BallSearchQuery = z.infer<typeof ballSearchSchema>;

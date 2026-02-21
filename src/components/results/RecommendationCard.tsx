@@ -11,14 +11,14 @@ import { PerformanceBreakdown } from "./PerformanceBreakdown";
 import type { Recommendation } from "@/types/recommendation";
 import type { Ball } from "@/types/ball";
 import { FavoriteButton } from "@/components/common/favorite-button";
-import { Trophy, ShoppingCart, BarChart3 } from "lucide-react";
+import { CompareButton } from "@/components/compare/compare-button";
+import { Trophy, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 
 interface RecommendationCardProps {
   recommendation: Recommendation;
   ball: Ball;
   rank: number;
-  onCompare?: () => void;
   onViewDetails?: () => void;
 }
 
@@ -26,7 +26,6 @@ export function RecommendationCard({
   recommendation,
   ball,
   rank,
-  onCompare,
   onViewDetails,
 }: RecommendationCardProps) {
   const isTopPick = rank === 1;
@@ -209,21 +208,15 @@ export function RecommendationCard({
 
         {/* Actions */}
         <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-700">
-          {onCompare && (
-            <Button
-              variant={isTopPick ? "outline" : "default"}
-              size="sm"
-              onClick={onCompare}
-              className={
-                isTopPick
-                  ? "border-gray-600 text-white hover:bg-gray-800"
-                  : ""
-              }
-            >
-              <BarChart3 className="w-4 h-4 mr-2" />
-              Compare
-            </Button>
-          )}
+          <CompareButton
+            ball={{ id: ball.id, name: ball.name }}
+            variant="button"
+            className={
+              isTopPick
+                ? "border-gray-600 text-white hover:bg-gray-800"
+                : ""
+            }
+          />
           {onViewDetails && (
             <Button
               variant={isTopPick ? "outline" : "default"}

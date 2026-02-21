@@ -32,6 +32,12 @@ export function Header() {
             >
               Browse Balls
             </Link>
+            <Link
+              href="/compare"
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+            >
+              Compare
+            </Link>
           </nav>
         </div>
 

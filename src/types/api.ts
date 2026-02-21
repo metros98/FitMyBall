@@ -57,7 +57,7 @@ export interface BallQueryFilters {
   compression?: number;
   construction?: string;
   color?: string;
-  sortBy?: "price" | "compression" | "name";
+  sortBy?: "price" | "compression" | "name" | "manufacturer";
   sortOrder?: "asc" | "desc";
   page?: number;
   limit?: number;
@@ -84,6 +84,13 @@ export interface BallDetailResponse {
 export interface BallSearchResponse {
   results: Ball[];
   query: string;
+}
+
+/**
+ * Ball comparison response (GET /api/balls/compare)
+ */
+export interface BallCompareResponse {
+  balls: Ball[];
 }
 
 /**

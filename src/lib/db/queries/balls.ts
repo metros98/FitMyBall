@@ -55,7 +55,7 @@ export interface PaginationOptions {
 }
 
 export interface SortOptions {
-  sortBy: "price" | "compression" | "name";
+  sortBy: "price" | "compression" | "name" | "manufacturer";
   sortOrder: "asc" | "desc";
 }
 
@@ -138,6 +138,8 @@ export async function getAllBalls(
     orderBy.pricePerDozen = sortOrder;
   } else if (sortBy === "compression") {
     orderBy.compression = sortOrder;
+  } else if (sortBy === "manufacturer") {
+    orderBy.manufacturer = sortOrder;
   } else {
     orderBy.name = sortOrder;
   }

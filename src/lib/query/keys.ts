@@ -13,5 +13,7 @@ export const queryKeys = {
   balls: {
     all: ["balls"] as const,
     list: (filters: BallQueryFilters) => ["balls", "list", filters] as const,
+    compare: (ids: string[]) => ["balls", "compare", ids] as const,
+    search: (query: string) => ["balls", "search", query] as const,
   },
 } as const;

@@ -94,13 +94,17 @@ model Ball {
 // Enums
 enum SpinLevel {
   LOW
+  LOW_MID
   MID
+  MID_HIGH
   HIGH
 }
 
 enum LaunchLevel {
   LOW
+  LOW_MID
   MID
+  MID_HIGH
   HIGH
 }
 
