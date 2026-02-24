@@ -84,20 +84,27 @@ function loadSavedData(): { data: QuizFormData; step: number } {
 export function QuizProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
-  const [initial] = useState(loadSavedData);
-
   const form = useForm<QuizFormData>({
     resolver: zodResolver(quizSchema),
-    defaultValues: initial.data,
+    defaultValues: defaultValues,
     mode: "onTouched",
   });
 
   const [state, setState] = useState<QuizState>({
-    currentStep: initial.step,
+    currentStep: 1,
     direction: "forward",
     isSubmitting: false,
     submitError: null,
   });
+
+  // Load saved data after hydration to avoid server/client mismatch
+  useEffect(() => {
+    const saved = loadSavedData();
+    if (saved.step !== 1 || JSON.stringify(saved.data) !== JSON.stringify(defaultValues)) {
+      form.reset(saved.data);
+      setState(prev => ({ ...prev, currentStep: saved.step }));
+    }
+  }, [form]);
 
   // --- Auto-save (debounced) ---
   const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -242,7 +249,7 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       const result = await res.json();
       localStorage.removeItem(STORAGE_KEY);
       localStorage.removeItem(STORAGE_STEP_KEY);
-      router.push(`/results/${result.sessionId}`);
+      router.push(`/results/${result.data.sessionId}`);
     } catch (err) {
       setState((prev) => ({
         ...prev,
