@@ -37,15 +37,27 @@ export default function BrowsePage() {
     [searchParams]
   );
 
-  // Local multi-select state for filter types the API accepts as single values
+  // Local multi-select state for filter types
   const [selectedBrands, setSelectedBrands] = useState<string[]>(
-    urlFilters.manufacturer ? [urlFilters.manufacturer] : []
+    urlFilters.manufacturer
+      ? Array.isArray(urlFilters.manufacturer)
+        ? urlFilters.manufacturer
+        : [urlFilters.manufacturer]
+      : []
   );
   const [selectedConstructions, setSelectedConstructions] = useState<string[]>(
-    urlFilters.construction ? [urlFilters.construction] : []
+    urlFilters.construction
+      ? Array.isArray(urlFilters.construction)
+        ? urlFilters.construction
+        : [urlFilters.construction]
+      : []
   );
   const [selectedColors, setSelectedColors] = useState<string[]>(
-    urlFilters.color ? [urlFilters.color] : []
+    urlFilters.color
+      ? Array.isArray(urlFilters.color)
+        ? urlFilters.color
+        : [urlFilters.color]
+      : []
   );
   const [priceRange, setPriceRange] = useState<[number, number]>([
     urlFilters.minPrice ?? PRICE_RANGE.min,
@@ -70,10 +82,15 @@ export default function BrowsePage() {
     };
 
     if (urlFilters.q) f.q = urlFilters.q;
-    if (selectedBrands.length === 1) f.manufacturer = selectedBrands[0];
-    if (selectedConstructions.length === 1)
-      f.construction = selectedConstructions[0];
-    if (selectedColors.length === 1) f.color = selectedColors[0];
+    if (selectedBrands.length > 0) {
+      f.manufacturer = selectedBrands.length === 1 ? selectedBrands[0] : selectedBrands;
+    }
+    if (selectedConstructions.length > 0) {
+      f.construction = selectedConstructions.length === 1 ? selectedConstructions[0] : selectedConstructions;
+    }
+    if (selectedColors.length > 0) {
+      f.color = selectedColors.length === 1 ? selectedColors[0] : selectedColors;
+    }
     if (priceRange[0] !== PRICE_RANGE.min) f.minPrice = priceRange[0];
     if (priceRange[1] !== PRICE_RANGE.max) f.maxPrice = priceRange[1];
     if (

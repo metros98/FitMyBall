@@ -51,12 +51,12 @@ export interface PaginatedResponse<T> {
  */
 export interface BallQueryFilters {
   q?: string;
-  manufacturer?: string;
+  manufacturer?: string | string[];
   minPrice?: number;
   maxPrice?: number;
   compression?: number;
-  construction?: string;
-  color?: string;
+  construction?: string | string[];
+  color?: string | string[];
   sortBy?: "price" | "compression" | "name" | "manufacturer";
   sortOrder?: "asc" | "desc";
   page?: number;

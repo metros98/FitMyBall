@@ -61,19 +61,35 @@ export function parseFiltersFromSearchParams(
     return Array.isArray(val) ? val[0] : val;
   };
 
+  const getAll = (key: string): string[] | undefined => {
+    if (searchParams instanceof URLSearchParams) {
+      const values = searchParams.getAll(key);
+      return values.length > 0 ? values : undefined;
+    }
+    const val = searchParams[key];
+    if (!val) return undefined;
+    return Array.isArray(val) ? val : [val];
+  };
+
   const filters: BallQueryFilters = {};
 
   const q = get("q");
   if (q) filters.q = q;
 
-  const manufacturer = get("manufacturer");
-  if (manufacturer) filters.manufacturer = manufacturer;
+  const manufacturers = getAll("manufacturer");
+  if (manufacturers) {
+    filters.manufacturer = manufacturers.length === 1 ? manufacturers[0] : manufacturers;
+  }
 
-  const construction = get("construction");
-  if (construction) filters.construction = construction;
+  const constructions = getAll("construction");
+  if (constructions) {
+    filters.construction = constructions.length === 1 ? constructions[0] : constructions;
+  }
 
-  const color = get("color");
-  if (color) filters.color = color;
+  const colors = getAll("color");
+  if (colors) {
+    filters.color = colors.length === 1 ? colors[0] : colors;
+  }
 
   const minPrice = get("minPrice");
   if (minPrice != null) {

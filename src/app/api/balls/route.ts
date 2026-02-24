@@ -9,8 +9,19 @@ import type { BallListResponse } from "@/types/api";
 export async function GET(request: NextRequest) {
   try {
     // Parse and validate query parameters
-    const searchParams = Object.fromEntries(request.nextUrl.searchParams);
-    const validationResult = ballQuerySchema.safeParse(searchParams);
+    // Convert URLSearchParams to object, preserving arrays for duplicate keys
+    const searchParamsObj: Record<string, string | string[]> = {};
+    for (const [key, value] of request.nextUrl.searchParams.entries()) {
+      const existing = searchParamsObj[key];
+      if (existing) {
+        // If key already exists, convert to array or append to existing array
+        searchParamsObj[key] = Array.isArray(existing) ? [...existing, value] : [existing, value];
+      } else {
+        searchParamsObj[key] = value;
+      }
+    }
+
+    const validationResult = ballQuerySchema.safeParse(searchParamsObj);
 
     if (!validationResult.success) {
       return validationError(validationResult.error);

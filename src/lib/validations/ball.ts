@@ -6,12 +6,12 @@ import { z } from "zod";
  */
 export const ballQuerySchema = z.object({
   q: z.string().min(2, "Search query must be at least 2 characters").optional(),
-  manufacturer: z.string().optional(),
+  manufacturer: z.union([z.string(), z.array(z.string())]).optional(),
   minPrice: z.coerce.number().min(0).optional(),
   maxPrice: z.coerce.number().min(0).optional(),
   compression: z.coerce.number().min(0).max(120).optional(),
-  construction: z.string().optional(),
-  color: z.string().optional(),
+  construction: z.union([z.string(), z.array(z.string())]).optional(),
+  color: z.union([z.string(), z.array(z.string())]).optional(),
   sortBy: z.enum(["price", "compression", "name", "manufacturer"]).optional().default("name"),
   sortOrder: z.enum(["asc", "desc"]).optional().default("asc"),
   page: z.coerce.number().int().min(1).optional().default(1),

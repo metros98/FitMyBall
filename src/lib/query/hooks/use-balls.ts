@@ -8,12 +8,35 @@ async function fetchBalls(filters: BallQueryFilters): Promise<BallListResponse> 
   const params = new URLSearchParams();
 
   if (filters.q) params.set("q", filters.q);
-  if (filters.manufacturer) params.set("manufacturer", filters.manufacturer);
+
+  if (filters.manufacturer) {
+    if (Array.isArray(filters.manufacturer)) {
+      filters.manufacturer.forEach(m => params.append("manufacturer", m));
+    } else {
+      params.set("manufacturer", filters.manufacturer);
+    }
+  }
+
   if (filters.minPrice != null) params.set("minPrice", String(filters.minPrice));
   if (filters.maxPrice != null) params.set("maxPrice", String(filters.maxPrice));
   if (filters.compression != null) params.set("compression", String(filters.compression));
-  if (filters.construction) params.set("construction", filters.construction);
-  if (filters.color) params.set("color", filters.color);
+
+  if (filters.construction) {
+    if (Array.isArray(filters.construction)) {
+      filters.construction.forEach(c => params.append("construction", c));
+    } else {
+      params.set("construction", filters.construction);
+    }
+  }
+
+  if (filters.color) {
+    if (Array.isArray(filters.color)) {
+      filters.color.forEach(c => params.append("color", c));
+    } else {
+      params.set("color", filters.color);
+    }
+  }
+
   if (filters.sortBy) params.set("sortBy", filters.sortBy);
   if (filters.sortOrder) params.set("sortOrder", filters.sortOrder);
   if (filters.page != null) params.set("page", String(filters.page));

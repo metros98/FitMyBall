@@ -41,12 +41,12 @@ function convertBall(ball: PrismaBall): Ball {
 
 export interface BallFilters {
   q?: string;
-  manufacturer?: string;
+  manufacturer?: string | string[];
   minPrice?: number;
   maxPrice?: number;
   compression?: number;
-  construction?: string;
-  color?: string;
+  construction?: string | string[];
+  color?: string | string[];
 }
 
 export interface PaginationOptions {
@@ -80,54 +80,98 @@ export async function getAllBalls(
   const skip = (page - 1) * limit;
 
   // Build where clause
-  const where: Prisma.BallWhereInput = {
-    inStock: true, // Only show in-stock balls
-  };
+  const andConditions: Prisma.BallWhereInput[] = [
+    { inStock: true }, // Only show in-stock balls
+  ];
 
+  // Search query (name OR manufacturer contains search term)
   if (filters?.q) {
-    where.OR = [
-      { name: { contains: filters.q, mode: "insensitive" } },
-      { manufacturer: { contains: filters.q, mode: "insensitive" } },
-    ];
+    andConditions.push({
+      OR: [
+        { name: { contains: filters.q, mode: "insensitive" } },
+        { manufacturer: { contains: filters.q, mode: "insensitive" } },
+      ],
+    });
   }
 
+  // Manufacturer filter (single or multiple)
   if (filters?.manufacturer) {
-    where.manufacturer = {
-      equals: filters.manufacturer,
-      mode: "insensitive",
-    };
+    if (Array.isArray(filters.manufacturer)) {
+      andConditions.push({
+        manufacturer: {
+          in: filters.manufacturer,
+        },
+      });
+    } else {
+      andConditions.push({
+        manufacturer: {
+          equals: filters.manufacturer,
+          mode: "insensitive",
+        },
+      });
+    }
   }
 
+  // Price range filter
   if (filters?.minPrice !== undefined || filters?.maxPrice !== undefined) {
-    where.pricePerDozen = {};
+    const priceFilter: Prisma.BallWhereInput = { pricePerDozen: {} };
     if (filters.minPrice !== undefined) {
-      where.pricePerDozen.gte = filters.minPrice;
+      (priceFilter.pricePerDozen as any).gte = filters.minPrice;
     }
     if (filters.maxPrice !== undefined) {
-      where.pricePerDozen.lte = filters.maxPrice;
+      (priceFilter.pricePerDozen as any).lte = filters.maxPrice;
+    }
+    andConditions.push(priceFilter);
+  }
+
+  // Compression filter (within ±5)
+  if (filters?.compression !== undefined) {
+    andConditions.push({
+      compression: {
+        gte: filters.compression - 5,
+        lte: filters.compression + 5,
+      },
+    });
+  }
+
+  // Construction filter (single or multiple)
+  if (filters?.construction) {
+    if (Array.isArray(filters.construction)) {
+      andConditions.push({
+        construction: {
+          in: filters.construction,
+        },
+      });
+    } else {
+      andConditions.push({
+        construction: {
+          equals: filters.construction,
+          mode: "insensitive",
+        },
+      });
     }
   }
 
-  if (filters?.compression !== undefined) {
-    // Match compression within ±5
-    where.compression = {
-      gte: filters.compression - 5,
-      lte: filters.compression + 5,
-    };
-  }
-
-  if (filters?.construction) {
-    where.construction = {
-      equals: filters.construction,
-      mode: "insensitive",
-    };
-  }
-
+  // Color filter (single or multiple)
   if (filters?.color) {
-    where.availableColors = {
-      has: filters.color,
-    };
+    if (Array.isArray(filters.color)) {
+      andConditions.push({
+        OR: filters.color.map(c => ({
+          availableColors: { has: c }
+        })),
+      });
+    } else {
+      andConditions.push({
+        availableColors: {
+          has: filters.color,
+        },
+      });
+    }
   }
+
+  const where: Prisma.BallWhereInput = {
+    AND: andConditions,
+  };
 
   // Build orderBy clause
   const orderBy: Prisma.BallOrderByWithRelationInput = {};
