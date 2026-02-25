@@ -114,6 +114,7 @@
   --color-sidebar-accent: hsl(var(--sidebar-accent));
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
   /* FitMyBall surface colors */
@@ -144,6 +145,11 @@
 
   /* FitMyBall surface highlight */
   --color-surface-highlight: #1E3A5F;
+
+  /* Border radii */
+  --radius-card: 12px;
+  --radius-button: 8px;
+  --radius-input: 8px;
 
   /* Font families */
   --font-display: var(--font-display, "Plus Jakarta Sans"), sans-serif;

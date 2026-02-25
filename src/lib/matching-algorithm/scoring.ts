@@ -108,8 +108,8 @@ export function scoreSwingSpeed(ball: Ball, ballSpeed: number): number {
 // Sub-weights: Spin(40%) + Launch(30%) + Feel(30%)
 // ============================================================================
 
-const SPIN_LEVELS: SpinLevel[] = ["LOW", "MID", "HIGH"];
-const LAUNCH_LEVELS: LaunchLevel[] = ["LOW", "MID", "HIGH"];
+const SPIN_LEVELS: SpinLevel[] = ["LOW", "LOW_MID", "MID", "MID_HIGH", "HIGH"];
+const LAUNCH_LEVELS: LaunchLevel[] = ["LOW", "LOW_MID", "MID", "MID_HIGH", "HIGH"];
 const FEEL_LEVELS: FeelLevel[] = ["VERY_SOFT", "SOFT", "MEDIUM", "FIRM"];
 
 function spinDistance(a: SpinLevel, b: SpinLevel): number {

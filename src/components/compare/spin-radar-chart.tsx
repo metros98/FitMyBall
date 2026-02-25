@@ -19,8 +19,10 @@ const BALL_COLORS = ["#2563eb", "#dc2626", "#16a34a", "#9333ea"];
 
 const SPIN_LEVEL_MAP: Record<SpinLevel, number> = {
   LOW: 1,
-  MID: 2,
-  HIGH: 3,
+  LOW_MID: 2,
+  MID: 3,
+  MID_HIGH: 4,
+  HIGH: 5,
 };
 
 interface ChartDataPoint {

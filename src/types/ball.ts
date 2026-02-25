@@ -1,7 +1,7 @@
 // Ball types — derived from Prisma schema enums and Ball model
 
-export type SpinLevel = "LOW" | "MID" | "HIGH";
-export type LaunchLevel = "LOW" | "MID" | "HIGH";
+export type SpinLevel = "LOW" | "LOW_MID" | "MID" | "MID_HIGH" | "HIGH";
+export type LaunchLevel = "LOW" | "LOW_MID" | "MID" | "MID_HIGH" | "HIGH";
 export type FeelLevel = "VERY_SOFT" | "SOFT" | "MEDIUM" | "FIRM";
 export type TempLevel = "WARM" | "MODERATE" | "COLD" | "ALL";
 

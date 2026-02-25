@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { Suspense, useCallback, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useBalls } from "@/lib/query/hooks/use-balls";
 import {
@@ -28,6 +28,40 @@ import { ArrowLeft, ArrowRight, SearchX } from "lucide-react";
 const ITEMS_PER_PAGE = 20;
 
 export default function BrowsePage() {
+  return (
+    <Suspense fallback={<BrowsePageSkeleton />}>
+      <BrowsePageContent />
+    </Suspense>
+  );
+}
+
+function BrowsePageSkeleton() {
+  return (
+    <div className="min-h-screen bg-surface-base">
+      <div className="container mx-auto px-4 py-8 space-y-6">
+        <div>
+          <Skeleton className="h-9 w-64" />
+          <Skeleton className="h-5 w-96 mt-1" />
+        </div>
+        <Skeleton className="h-10 w-full" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="space-y-4 p-4">
+              <Skeleton className="aspect-square rounded-lg" />
+              <div className="space-y-2">
+                <Skeleton className="h-5 w-3/4" />
+                <Skeleton className="h-4 w-1/2" />
+                <Skeleton className="h-6 w-1/3" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BrowsePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
