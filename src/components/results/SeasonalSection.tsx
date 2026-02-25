@@ -22,10 +22,10 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
   return (
     <section className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-2xl font-bold text-slate-100">
           Seasonal Recommendations
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mt-1">
+        <p className="text-slate-400 mt-1">
           Optimize your performance across different weather conditions
         </p>
       </div>
@@ -39,7 +39,7 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
                 <Sun className="w-5 h-5 text-orange-600" />
                 <h3 className="font-semibold text-orange-600">Warm Weather</h3>
               </div>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
+              <p className="text-xs text-slate-400 mt-0.5">
                 Optimized for 70°F and above
               </p>
             </div>
@@ -50,7 +50,7 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
                 return (
                   <>
                     <div className="flex gap-4">
-                      <div className="w-24 h-24 relative bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="w-24 h-24 relative bg-surface-base rounded-lg overflow-hidden flex-shrink-0">
                         {ball.imageUrl ? (
                           <Image
                             src={ball.imageUrl}
@@ -67,7 +67,7 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
 
                       <div className="space-y-1">
                         <h4 className="font-bold text-base">{ball.name}</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <p className="text-sm text-slate-400">
                           {ball.manufacturer}
                         </p>
                         <p className="text-lg font-semibold">
@@ -76,7 +76,7 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
                       </div>
                     </div>
 
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <p className="text-sm text-slate-300">
                       {seasonalPicks.warmWeather!.reason}
                     </p>
 
@@ -98,7 +98,7 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
                 <Snowflake className="w-5 h-5 text-blue-600" />
                 <h3 className="font-semibold text-blue-600">Cold Weather</h3>
               </div>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
+              <p className="text-xs text-slate-400 mt-0.5">
                 Maintains feel below 50°F
               </p>
             </div>
@@ -109,7 +109,7 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
                 return (
                   <>
                     <div className="flex gap-4">
-                      <div className="w-24 h-24 relative bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="w-24 h-24 relative bg-surface-base rounded-lg overflow-hidden flex-shrink-0">
                         {ball.imageUrl ? (
                           <Image
                             src={ball.imageUrl}
@@ -126,7 +126,7 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
 
                       <div className="space-y-1">
                         <h4 className="font-bold text-base">{ball.name}</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <p className="text-sm text-slate-400">
                           {ball.manufacturer}
                         </p>
                         <p className="text-lg font-semibold">
@@ -135,7 +135,7 @@ export function SeasonalSection({ seasonalPicks, balls }: SeasonalSectionProps) 
                       </div>
                     </div>
 
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <p className="text-sm text-slate-300">
                       {seasonalPicks.coldWeather!.reason}
                     </p>
 

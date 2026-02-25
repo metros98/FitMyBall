@@ -61,14 +61,14 @@ export default function TriedBallsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto space-y-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-bold text-slate-100">
               Balls I&apos;ve Tried
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-slate-400 mt-1">
               Track your experience with different golf balls
             </p>
           </div>
@@ -83,10 +83,10 @@ export default function TriedBallsPage() {
             <Card>
               <CardContent className="flex flex-col items-center py-12 text-center">
                 <ClipboardCheck className="h-12 w-12 text-gray-400 mb-4" />
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                <h2 className="text-lg font-semibold text-slate-100 mb-2">
                   No balls reviewed yet
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-sm">
+                <p className="text-slate-400 mb-6 max-w-sm">
                   Track your experience with golf balls to remember what works
                   for your game.
                 </p>

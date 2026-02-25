@@ -46,8 +46,8 @@ export function StepBackground() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-semibold">Your Golf Background</h2>
-        <p className="text-muted-foreground mt-1">
+        <h2 className="text-2xl font-display font-semibold text-slate-100">Your Golf Background</h2>
+        <p className="text-slate-400 mt-1">
           Tell us about your game so we can find the right ball.
         </p>
       </div>

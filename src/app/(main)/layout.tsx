@@ -10,7 +10,7 @@ export default function MainLayout({
   return (
     <CompareProvider>
       <Header />
-      <main>{children}</main>
+      <main className="bg-surface-base min-h-screen">{children}</main>
       <CompareBar />
     </CompareProvider>
   );

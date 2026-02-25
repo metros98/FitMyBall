@@ -39,7 +39,7 @@ export function TriedBallCard({
               />
             </div>
           ) : (
-            <div className="w-14 h-14 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0">
+            <div className="w-14 h-14 rounded-lg bg-surface-active flex items-center justify-center shrink-0">
               <span className="text-xl">⛳</span>
             </div>
           )}
@@ -47,10 +47,10 @@ export function TriedBallCard({
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
               <div>
-                <p className="font-medium text-gray-900 dark:text-white">
+                <p className="font-medium text-slate-100">
                   {item.ball.name}
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-slate-400">
                   {item.ball.manufacturer}
                 </p>
               </div>
@@ -80,7 +80,7 @@ export function TriedBallCard({
             <div className="flex items-center gap-3 mt-2">
               <StarRating value={item.rating} readonly size="sm" />
               {item.roundsPlayed != null && (
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-xs text-slate-400">
                   {item.roundsPlayed} round{item.roundsPlayed !== 1 ? "s" : ""}
                 </span>
               )}
@@ -89,8 +89,8 @@ export function TriedBallCard({
                   variant="secondary"
                   className={
                     item.wouldRecommend
-                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                      : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                      ? "bg-match-excellent/15 text-match-excellent"
+                      : "bg-red-500/15 text-red-400"
                   }
                 >
                   {item.wouldRecommend ? (
@@ -109,17 +109,17 @@ export function TriedBallCard({
               item.feelVsExpected) && (
               <div className="flex flex-wrap gap-2 mt-2">
                 {item.distanceVsExpected && (
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-slate-400">
                     Distance: {comparisonLabels.distance[item.distanceVsExpected]}
                   </span>
                 )}
                 {item.spinVsExpected && (
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-slate-400">
                     Spin: {comparisonLabels.spin[item.spinVsExpected]}
                   </span>
                 )}
                 {item.feelVsExpected && (
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-slate-400">
                     Feel: {comparisonLabels.feel[item.feelVsExpected]}
                   </span>
                 )}
@@ -127,7 +127,7 @@ export function TriedBallCard({
             )}
 
             {item.notes && (
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 line-clamp-2">
+              <p className="text-sm text-slate-300 mt-2 line-clamp-2">
                 {item.notes}
               </p>
             )}

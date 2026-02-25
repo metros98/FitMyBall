@@ -290,14 +290,14 @@ export default function BrowsePage() {
   const total = pagination?.total ?? 0;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       <div className="container mx-auto px-4 py-8 space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-display font-bold text-slate-100">
             Browse All Golf Balls
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
+          <p className="text-slate-400 mt-1">
             Explore our full database of golf balls. Filter by brand, price,
             construction, and more.
           </p>
@@ -369,7 +369,7 @@ export default function BrowsePage() {
             onChange={handleSortChange}
           />
           {!isLoading && (
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-slate-400">
               Showing {balls.length} of {total}
             </span>
           )}
@@ -399,11 +399,11 @@ export default function BrowsePage() {
           /* Empty state */
           <Card>
             <CardContent className="flex flex-col items-center py-16 text-center">
-              <SearchX className="h-12 w-12 text-gray-400 mb-4" />
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              <SearchX className="h-12 w-12 text-slate-500 mb-4" />
+              <h2 className="text-lg font-semibold text-slate-100 mb-2">
                 No balls found
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-sm">
+              <p className="text-slate-400 mb-6 max-w-sm">
                 Try adjusting your filters or search terms to find what
                 you&apos;re looking for.
               </p>
@@ -437,7 +437,7 @@ export default function BrowsePage() {
                   <ArrowLeft className="mr-1 h-4 w-4" />
                   Previous
                 </Button>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
+                <span className="text-sm text-slate-400">
                   Page {page} of {totalPages}
                 </span>
                 <Button

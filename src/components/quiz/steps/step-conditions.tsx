@@ -26,8 +26,8 @@ export function StepConditions() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-semibold">Playing Conditions</h2>
-        <p className="text-muted-foreground mt-1">
+        <h2 className="text-2xl font-display font-semibold text-slate-100">Playing Conditions</h2>
+        <p className="text-slate-400 mt-1">
           Help us factor in your environment and performance data.
         </p>
       </div>

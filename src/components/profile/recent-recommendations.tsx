@@ -22,9 +22,9 @@ function formatDate(dateStr: string): string {
 }
 
 function getMatchColor(score: number): string {
-  if (score >= 75) return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
-  if (score >= 60) return "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400";
-  return "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400";
+  if (score >= 75) return "bg-match-excellent/15 text-match-excellent";
+  if (score >= 60) return "bg-match-good/15 text-match-good";
+  return "bg-match-fair/15 text-match-fair";
 }
 
 export function RecentRecommendations({
@@ -46,7 +46,7 @@ export function RecentRecommendations({
       <Card>
         <CardContent className="flex flex-col items-center py-8 text-center">
           <BarChart3 className="h-10 w-10 text-gray-400 mb-3" />
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-slate-400 mb-4">
             No recommendations yet. Take the quiz to find your perfect golf ball.
           </p>
           <Button asChild>
@@ -63,10 +63,10 @@ export function RecentRecommendations({
         <Card key={item.id}>
           <CardContent className="flex items-center justify-between p-4">
             <div className="flex items-center gap-4 min-w-0">
-              <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+              <span className="text-sm text-slate-400 whitespace-nowrap">
                 {formatDate(item.createdAt)}
               </span>
-              <span className="text-sm font-medium text-gray-900 dark:text-white truncate">
+              <span className="text-sm font-medium text-slate-100 truncate">
                 {item.topBallName}
               </span>
               <Badge

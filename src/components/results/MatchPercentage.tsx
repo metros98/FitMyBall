@@ -108,7 +108,7 @@ export function MatchPercentage({
             fill="none"
             stroke="currentColor"
             strokeWidth={strokeWidth}
-            className="text-gray-200 dark:text-gray-700"
+            className="text-surface-active"
           />
         </svg>
 
@@ -141,7 +141,7 @@ export function MatchPercentage({
       </div>
 
       {showLabel && (
-        <span className={cn("font-medium text-gray-600 dark:text-gray-400", sizes.label)}>
+        <span className={cn("font-medium text-slate-400", sizes.label)}>
           Match Score
         </span>
       )}

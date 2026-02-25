@@ -34,8 +34,8 @@ export function RecommendationCard({
     <Card
       className={
         isTopPick
-          ? "bg-slate-900 dark:bg-slate-950 border-slate-800 text-white"
-          : "bg-white dark:bg-slate-900"
+          ? "bg-surface-card border-slate-800 text-white"
+          : "bg-surface-card"
       }
     >
       <div className="p-6 space-y-6">
@@ -92,7 +92,7 @@ export function RecommendationCard({
               <h3 className="text-xl font-bold">{ball.name}</h3>
               <p
                 className={
-                  isTopPick ? "text-gray-300" : "text-gray-600 dark:text-gray-400"
+                  isTopPick ? "text-gray-300" : "text-slate-400"
                 }
               >
                 {ball.manufacturer}
@@ -107,7 +107,7 @@ export function RecommendationCard({
               <div className="flex items-center gap-2">
                 <span
                   className={
-                    isTopPick ? "text-gray-400 text-sm" : "text-gray-600 dark:text-gray-400 text-sm"
+                    isTopPick ? "text-gray-400 text-sm" : "text-slate-400 text-sm"
                   }
                 >
                   Available in:
@@ -141,7 +141,7 @@ export function RecommendationCard({
                   className={
                     isTopPick
                       ? "text-gray-300 text-sm flex items-start gap-2"
-                      : "text-gray-700 dark:text-gray-300 text-sm flex items-start gap-2"
+                      : "text-slate-300 text-sm flex items-start gap-2"
                   }
                 >
                   <span className="text-green-600 mt-0.5">•</span>
@@ -165,7 +165,7 @@ export function RecommendationCard({
                   className={
                     isTopPick
                       ? "text-gray-300 text-sm flex items-start gap-2"
-                      : "text-gray-700 dark:text-gray-300 text-sm flex items-start gap-2"
+                      : "text-slate-300 text-sm flex items-start gap-2"
                   }
                 >
                   <span className="text-teal-500 mt-0.5">•</span>
@@ -189,7 +189,7 @@ export function RecommendationCard({
                   className={
                     isTopPick
                       ? "text-gray-300 text-sm flex items-start gap-2"
-                      : "text-gray-700 dark:text-gray-300 text-sm flex items-start gap-2"
+                      : "text-slate-300 text-sm flex items-start gap-2"
                   }
                 >
                   <span className="text-yellow-500 mt-0.5">•</span>

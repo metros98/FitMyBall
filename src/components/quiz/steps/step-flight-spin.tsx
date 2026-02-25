@@ -15,12 +15,12 @@ export function StepFlightSpin() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-semibold">Ball Flight & Spin</h2>
-        <p className="text-muted-foreground mt-1">
+        <h2 className="text-2xl font-display font-semibold text-slate-100">Ball Flight & Spin</h2>
+        <p className="text-slate-400 mt-1">
           Tell us about your ball flight preferences.
         </p>
         {isPreferencesOnly && (
-          <p className="text-sm text-muted-foreground mt-2 bg-muted px-3 py-2 rounded-md">
+          <p className="text-sm text-slate-400 mt-2 bg-surface-active px-3 py-2 rounded-md">
             These fields are optional based on your priorities, but providing
             them will improve your recommendations.
           </p>

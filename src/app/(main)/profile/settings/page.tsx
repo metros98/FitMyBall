@@ -18,14 +18,14 @@ export default function SettingsPage() {
   if (!userId) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto space-y-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-bold text-slate-100">
               Settings
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-slate-400 mt-1">
               Manage your account and preferences
             </p>
           </div>
@@ -61,7 +61,7 @@ export default function SettingsPage() {
                 </CardHeader>
                 <CardContent>
                   {profile?.hasPassword === false ? (
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-slate-400">
                       Your account uses social login. Password management is not
                       available.
                     </p>
@@ -96,10 +96,10 @@ export default function SettingsPage() {
                   <Separator className="mb-6" />
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">
+                      <p className="text-sm font-medium text-slate-100">
                         Delete Account
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-slate-400">
                         Permanently remove your account and all associated data
                       </p>
                     </div>

@@ -87,7 +87,7 @@ export function ProfilesSection() {
           <CardContent className="flex items-center justify-between p-4">
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <p className="font-medium text-gray-900 dark:text-white">
+                <p className="font-medium text-slate-100">
                   {profile.profileName}
                 </p>
                 {profile.isDefault && (
@@ -97,7 +97,7 @@ export function ProfilesSection() {
                   </Badge>
                 )}
               </div>
-              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-sm text-slate-400">
                 {profile.driverBallSpeed && (
                   <span>Ball speed: {profile.driverBallSpeed} mph</span>
                 )}
@@ -135,7 +135,7 @@ export function ProfilesSection() {
       ))}
 
       {(!data || data.profiles.length === 0) && (
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-sm text-slate-400">
           No profiles yet. Create one to save your quiz preferences.
         </p>
       )}

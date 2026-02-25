@@ -11,14 +11,14 @@ export function QuizProgress() {
 
   return (
     <div className="space-y-2">
-      <p className="text-sm font-medium text-muted-foreground">
+      <p className="text-sm font-medium text-slate-400">
         Step {state.currentStep} of {totalSteps}
         <span className="mx-2">&middot;</span>
         {stepMeta.name}
       </p>
       <Progress
         value={percentage}
-        className="h-2 [&>div]:bg-green-600 [&>div]:transition-all [&>div]:duration-300"
+        className="h-2 bg-surface-active [&>div]:bg-accent-bar [&>div]:transition-all [&>div]:duration-500"
       />
     </div>
   );

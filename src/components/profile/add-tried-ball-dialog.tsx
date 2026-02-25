@@ -178,7 +178,7 @@ export function AddTriedBallDialog({
                 name="distanceVsExpected"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm text-gray-600 dark:text-gray-400">
+                    <FormLabel className="text-sm text-slate-400">
                       Distance
                     </FormLabel>
                     <FormControl>
@@ -210,7 +210,7 @@ export function AddTriedBallDialog({
                 name="spinVsExpected"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm text-gray-600 dark:text-gray-400">
+                    <FormLabel className="text-sm text-slate-400">
                       Spin
                     </FormLabel>
                     <FormControl>
@@ -242,7 +242,7 @@ export function AddTriedBallDialog({
                 name="feelVsExpected"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm text-gray-600 dark:text-gray-400">
+                    <FormLabel className="text-sm text-slate-400">
                       Feel
                     </FormLabel>
                     <FormControl>

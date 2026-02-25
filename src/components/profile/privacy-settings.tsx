@@ -46,7 +46,7 @@ export function PrivacySettings({ userId }: PrivacySettingsProps) {
           <Label htmlFor="marketing" className="text-sm font-medium">
             Marketing Emails
           </Label>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-sm text-slate-400 mt-1">
             Receive emails about new ball releases, price drops on favorites,
             and seasonal tips.
           </p>
@@ -66,7 +66,7 @@ export function PrivacySettings({ userId }: PrivacySettingsProps) {
           <Label htmlFor="analytics" className="text-sm font-medium">
             Analytics
           </Label>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-sm text-slate-400 mt-1">
             Allow anonymous usage analytics to help us improve the app. No
             personal data is shared.
           </p>

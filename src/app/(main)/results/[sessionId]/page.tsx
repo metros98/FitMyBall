@@ -38,14 +38,14 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4">
         <div className="text-center max-w-md space-y-6">
-          <div className="mx-auto w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-            <Clock className="w-8 h-8 text-amber-600 dark:text-amber-400" />
+          <div className="mx-auto w-16 h-16 rounded-full bg-amber-950 flex items-center justify-center">
+            <Clock className="w-8 h-8 text-amber-400" />
           </div>
           <div className="space-y-2">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-bold text-slate-100">
               This Recommendation Has Expired
             </h1>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-slate-400">
               Recommendations are available for 30 days. Take a fresh quiz to
               get updated recommendations.
             </p>
@@ -120,17 +120,17 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
     );
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <section className="bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+      <section className="bg-surface-card border-b border-[#1E293B]">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-5xl mx-auto space-y-4">
             <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-100">
                   Your Fitting Results
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400 mt-2">
+                <p className="text-slate-400 mt-2">
                   Based on your swing, preferences, and playing conditions
                 </p>
               </div>
@@ -201,7 +201,7 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
 
           {/* #1 Recommendation - Hero Card on dark surface */}
           <ResultsStagger index={0}>
-            <section className="bg-slate-900 dark:bg-slate-950 rounded-xl p-6">
+            <section className="bg-surface-card rounded-xl p-6">
               <RecommendationCard
                 recommendation={topRecommendation}
                 ball={topBall}
@@ -215,10 +215,10 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
             <ResultsStagger index={1}>
               <section className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-2xl font-bold text-slate-100">
                     Other Great Matches
                   </h2>
-                  <p className="text-gray-600 dark:text-gray-400 mt-1">
+                  <p className="text-slate-400 mt-1">
                     These balls also fit your game well
                   </p>
                 </div>

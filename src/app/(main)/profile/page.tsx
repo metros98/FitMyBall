@@ -24,7 +24,7 @@ export default function ProfileDashboardPage() {
     : "Welcome back!";
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Welcome */}
@@ -32,11 +32,11 @@ export default function ProfileDashboardPage() {
             {profileLoading ? (
               <Skeleton className="h-9 w-64" />
             ) : (
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-2xl sm:text-3xl font-bold text-slate-100">
                 {greeting}
               </h1>
             )}
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-slate-400 mt-1">
               Your golf ball fitting dashboard
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function ProfileDashboardPage() {
 
           {/* Quick Actions */}
           <section>
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-lg font-semibold text-slate-100 mb-4">
               Quick Actions
             </h2>
             <QuickActions />
@@ -54,7 +54,7 @@ export default function ProfileDashboardPage() {
 
           {/* Recent Recommendations */}
           <section>
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-lg font-semibold text-slate-100 mb-4">
               Recent Recommendations
             </h2>
             <RecentRecommendations
@@ -65,7 +65,7 @@ export default function ProfileDashboardPage() {
 
           {/* My Profiles */}
           <section>
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-lg font-semibold text-slate-100 mb-4">
               My Profiles
             </h2>
             <ProfilesSection />

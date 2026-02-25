@@ -31,7 +31,7 @@ function getConfidencePreview(data: Partial<QuizFormData>) {
       level: "high" as const,
       message: "We have strong data to match you accurately",
       icon: CircleCheck,
-      color: "text-green-600",
+      color: "text-green-500",
     };
   }
   if (!hasSpeed && !hasIron) {
@@ -73,8 +73,8 @@ export function StepReview() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold">Review Your Answers</h2>
-        <p className="text-muted-foreground mt-1">
+        <h2 className="text-2xl font-display font-semibold text-slate-100">Review Your Answers</h2>
+        <p className="text-slate-400 mt-1">
           Make sure everything looks correct before we find your perfect ball.
         </p>
       </div>
@@ -83,17 +83,17 @@ export function StepReview() {
       <div
         className={cn(
           "flex items-start gap-3 rounded-lg border p-4",
-          confidence.level === "high" && "border-green-200 bg-green-50",
-          confidence.level === "medium" && "border-blue-200 bg-blue-50",
-          confidence.level === "low" && "border-amber-200 bg-amber-50",
+          confidence.level === "high" && "border-green-500/20 bg-green-950",
+          confidence.level === "medium" && "border-blue-500/20 bg-sky-950",
+          confidence.level === "low" && "border-amber-500/20 bg-amber-950",
         )}
       >
         <ConfidenceIcon className={cn("h-5 w-5 mt-0.5 shrink-0", confidence.color)} />
         <div>
-          <p className="text-sm font-medium capitalize">
+          <p className="text-sm font-medium capitalize text-slate-100">
             {confidence.level} confidence
           </p>
-          <p className="text-sm text-muted-foreground">{confidence.message}</p>
+          <p className="text-sm text-slate-400">{confidence.message}</p>
         </div>
       </div>
 

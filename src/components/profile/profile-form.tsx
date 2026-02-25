@@ -79,7 +79,7 @@ export function ProfileForm({ userId }: ProfileFormProps) {
         {Array.from({ length: 5 }).map((_, i) => (
           <div
             key={i}
-            className="h-10 bg-gray-200 dark:bg-gray-800 rounded animate-pulse"
+            className="h-10 bg-surface-active rounded animate-pulse"
           />
         ))}
       </div>

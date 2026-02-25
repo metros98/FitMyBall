@@ -16,8 +16,8 @@ export function StepFeelPreferences() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-semibold">Feel & Preferences</h2>
-        <p className="text-muted-foreground mt-1">
+        <h2 className="text-2xl font-display font-semibold text-slate-100">Feel & Preferences</h2>
+        <p className="text-slate-400 mt-1">
           Tell us what matters to you in a golf ball.
         </p>
       </div>

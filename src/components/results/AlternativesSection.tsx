@@ -56,10 +56,10 @@ export function AlternativesSection({ alternatives, balls }: AlternativesSection
   return (
     <section className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-2xl font-bold text-slate-100">
           Alternative Options
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mt-1">
+        <p className="text-slate-400 mt-1">
           Other balls worth considering based on your priorities
         </p>
       </div>
@@ -86,14 +86,14 @@ export function AlternativesSection({ alternatives, balls }: AlternativesSection
                       </h3>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
+                  <p className="text-xs text-slate-400 mt-0.5">
                     {config.subtitle}
                   </p>
                 </div>
 
                 <div className="p-4 space-y-4">
                   {/* Ball image */}
-                  <div className="aspect-square relative bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden">
+                  <div className="aspect-square relative bg-surface-base rounded-lg overflow-hidden">
                     {ball.imageUrl ? (
                       <Image
                         src={ball.imageUrl}
@@ -114,7 +114,7 @@ export function AlternativesSection({ alternatives, balls }: AlternativesSection
                       <h4 className="font-bold text-base line-clamp-1">
                         {ball.name}
                       </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-slate-400">
                         {ball.manufacturer}
                       </p>
                     </div>
@@ -127,7 +127,7 @@ export function AlternativesSection({ alternatives, balls }: AlternativesSection
                       {Math.round(alt.matchPercentage)}% match
                     </Badge>
 
-                    <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
+                    <p className="text-sm text-slate-300 line-clamp-2">
                       {alt.reason}
                     </p>
 

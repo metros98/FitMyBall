@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function QuizLoading() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-surface-base">
       <div className="mx-auto max-w-3xl px-4 py-4 sm:py-8">
         {/* Progress bar skeleton */}
         <div className="space-y-2">

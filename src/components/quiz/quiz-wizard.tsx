@@ -27,7 +27,7 @@ function QuizWizardInner() {
   const StepComponent = STEP_COMPONENTS[state.currentStep];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-surface-base">
       <div className="mx-auto max-w-3xl px-4 py-4 sm:py-8">
         <QuizProgress />
 

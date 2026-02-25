@@ -31,14 +31,14 @@ export default function FavoritesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-bold text-slate-100">
               My Favorites
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-slate-400 mt-1">
               Balls you&apos;ve saved for later
             </p>
           </div>
@@ -53,10 +53,10 @@ export default function FavoritesPage() {
             <Card>
               <CardContent className="flex flex-col items-center py-12 text-center">
                 <Heart className="h-12 w-12 text-gray-400 mb-4" />
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                <h2 className="text-lg font-semibold text-slate-100 mb-2">
                   No favorites yet
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-sm">
+                <p className="text-slate-400 mb-6 max-w-sm">
                   Save balls you&apos;re interested in from your quiz results to
                   easily find them later.
                 </p>
@@ -90,18 +90,18 @@ export default function FavoritesPage() {
                           />
                         </div>
                       ) : (
-                        <div className="w-16 h-16 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center shrink-0">
+                        <div className="w-16 h-16 rounded-lg bg-surface-active flex items-center justify-center shrink-0">
                           <span className="text-2xl">⛳</span>
                         </div>
                       )}
                       <div className="min-w-0">
-                        <p className="font-medium text-gray-900 dark:text-white truncate">
+                        <p className="font-medium text-slate-100 truncate">
                           {fav.ball.name}
                         </p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-slate-400">
                           {fav.ball.manufacturer}
                         </p>
-                        <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mt-1">
+                        <p className="text-sm font-medium text-slate-300 mt-1">
                           ${fav.ball.pricePerDozen}/dz
                         </p>
                         <p className="text-xs text-gray-400 mt-1">

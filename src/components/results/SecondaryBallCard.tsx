@@ -61,7 +61,7 @@ export function SecondaryBallCard({
         </div>
 
         {/* Ball image */}
-        <div className="aspect-square relative bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden">
+        <div className="aspect-square relative bg-surface-base rounded-lg overflow-hidden">
           {ball.imageUrl ? (
             <Image
               src={ball.imageUrl}
@@ -80,12 +80,12 @@ export function SecondaryBallCard({
         <div className="space-y-2">
           <div>
             <h3 className="font-bold text-base line-clamp-1">{ball.name}</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-slate-400">
               {ball.manufacturer}
             </p>
           </div>
 
-          <p className="text-lg font-semibold text-gray-900 dark:text-white">
+          <p className="text-lg font-semibold text-slate-100">
             ${ball.pricePerDozen.toFixed(2)}
           </p>
 
@@ -104,7 +104,7 @@ export function SecondaryBallCard({
 
           {/* Top reason */}
           {recommendation.explanation.whyThisMatches[0] && (
-            <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
+            <p className="text-sm text-slate-300 line-clamp-2">
               {recommendation.explanation.whyThisMatches[0]}
             </p>
           )}

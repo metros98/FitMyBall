@@ -18,9 +18,10 @@ export function QuizNavigation({ className }: QuizNavigationProps) {
       {!isFirstStep ? (
         <Button
           type="button"
-          variant="outline"
+          variant="ghost"
           onClick={prevStep}
           disabled={state.isSubmitting}
+          className="text-slate-400 hover:text-white hover:bg-surface-elevated"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back
@@ -35,6 +36,7 @@ export function QuizNavigation({ className }: QuizNavigationProps) {
           onClick={submitQuiz}
           disabled={state.isSubmitting}
           size="lg"
+          className="bg-brand text-white hover:bg-brand-hover"
         >
           {state.isSubmitting ? (
             <>
@@ -46,7 +48,7 @@ export function QuizNavigation({ className }: QuizNavigationProps) {
           )}
         </Button>
       ) : (
-        <Button type="button" onClick={nextStep}>
+        <Button type="button" onClick={nextStep} className="bg-brand text-white hover:bg-brand-hover">
           Next
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>

@@ -21,8 +21,8 @@ export function BrowseBallCard({ ball }: BrowseBallCardProps) {
   return (
     <Card
       className={cn(
-        "group transition-all hover:shadow-lg",
-        selected && "ring-2 ring-blue-500"
+        "bg-surface-card border border-[#1E293B] rounded-card shadow-card group transition-all hover:border-slate-700 hover:shadow-card-hover",
+        selected && "ring-2 ring-brand"
       )}
     >
       <Link href={`/balls/${ball.slug}`} className="block">
@@ -54,7 +54,7 @@ export function BrowseBallCard({ ball }: BrowseBallCardProps) {
           </div>
 
           {/* Ball image */}
-          <div className="aspect-square relative bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden">
+          <div className="aspect-square relative bg-surface-base rounded-lg overflow-hidden">
             {ball.imageUrl ? (
               <Image
                 src={ball.imageUrl}
@@ -74,12 +74,12 @@ export function BrowseBallCard({ ball }: BrowseBallCardProps) {
           <div className="space-y-2">
             <div>
               <h3 className="font-bold text-base line-clamp-1">{ball.name}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-slate-400">
                 {ball.manufacturer}
               </p>
             </div>
 
-            <p className="text-lg font-semibold text-gray-900 dark:text-white">
+            <p className="text-lg font-semibold text-slate-100">
               ${ball.pricePerDozen.toFixed(2)}
               <span className="text-sm font-normal text-muted-foreground">
                 {" "}

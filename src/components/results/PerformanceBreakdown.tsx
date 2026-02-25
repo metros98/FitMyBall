@@ -25,7 +25,7 @@ export function PerformanceBreakdown({ scores, className }: PerformanceBreakdown
 
   return (
     <div className={cn("space-y-3", className)}>
-      <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+      <h3 className="text-sm font-semibold text-slate-100">
         Performance Breakdown
       </h3>
 
@@ -37,13 +37,13 @@ export function PerformanceBreakdown({ scores, className }: PerformanceBreakdown
           return (
             <div key={key} className="space-y-1">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-700 dark:text-gray-300">{label}</span>
-                <span className="font-medium text-gray-900 dark:text-white tabular-nums">
+                <span className="text-slate-300">{label}</span>
+                <span className="font-medium text-slate-100 tabular-nums">
                   {percentage}%
                 </span>
               </div>
               
-              <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div className="h-2 bg-surface-active rounded-full overflow-hidden">
                 <div
                   className={cn(
                     "h-full rounded-full transition-all duration-700 ease-out",

@@ -14,22 +14,22 @@ const statItems = [
     key: "totalRecommendations" as const,
     label: "Recommendations",
     icon: BarChart3,
-    color: "text-blue-600 dark:text-blue-400",
-    bg: "bg-blue-50 dark:bg-blue-950/50",
+    color: "text-blue-400",
+    bg: "bg-blue-950/50",
   },
   {
     key: "totalFavorites" as const,
     label: "Favorites",
     icon: Heart,
-    color: "text-red-500 dark:text-red-400",
-    bg: "bg-red-50 dark:bg-red-950/50",
+    color: "text-red-500 text-red-400",
+    bg: "bg-red-950/50",
   },
   {
     key: "totalTriedBalls" as const,
     label: "Balls Tried",
     icon: ClipboardCheck,
-    color: "text-green-600 dark:text-green-400",
-    bg: "bg-green-50 dark:bg-green-950/50",
+    color: "text-green-400",
+    bg: "bg-green-950/50",
   },
 ];
 
@@ -44,13 +44,13 @@ export function DashboardStats({ stats, isLoading }: DashboardStatsProps) {
             </div>
             <div>
               {isLoading ? (
-                <div className="h-7 w-8 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+                <div className="h-7 w-8 bg-surface-active rounded animate-pulse" />
               ) : (
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-2xl font-bold text-slate-100">
                   {stats?.[item.key] ?? 0}
                 </p>
               )}
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-slate-400">
                 {item.label}
               </p>
             </div>

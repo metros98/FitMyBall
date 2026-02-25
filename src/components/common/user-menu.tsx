@@ -28,7 +28,7 @@ export function UserMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-full">
         <Avatar className="h-9 w-9">
-          <AvatarFallback className="bg-primary text-primary-foreground text-sm font-medium">
+          <AvatarFallback className="bg-brand text-white text-sm font-medium">
             {initials}
           </AvatarFallback>
         </Avatar>

@@ -38,7 +38,7 @@ export function StarRating({
               "transition-colors",
               star <= (value ?? 0)
                 ? "fill-yellow-400 text-yellow-400"
-                : "text-gray-300 dark:text-gray-600"
+                : "text-slate-600"
             )}
           />
         </button>
