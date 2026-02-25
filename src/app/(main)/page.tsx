@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[80vh] bg-hero-radial flex items-center">
+      <section className="relative overflow-hidden min-h-[80vh] bg-surface-base flex items-center">
         {/* Grid overlay */}
         <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-20 pointer-events-none" />
 
