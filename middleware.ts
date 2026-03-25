@@ -1,4 +1,4 @@
-export { auth as middleware } from "@/lib/auth/auth.config"
+export { auth as middleware } from "@/lib/auth/edge.config"
 
 export const config = {
   matcher: [
