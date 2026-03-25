@@ -1,0 +1,1250 @@
+[
+  {
+    "manufacturer": "Titleist",
+    "ball_name": "Pro V1",
+    "construction": "3-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 90,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "The #1 ball on Tour offering exceptional distance, control and short game spin.",
+    "product_page_urls": [
+      {"retailer": "Titleist", "url": "https://www.titleist.com/golf-balls/pro-v1"}
+    ]
+  },
+  {
+    "manufacturer": "Titleist",
+    "ball_name": "Pro V1x",
+    "construction": "4-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 100,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid-High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Low-Mid",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "High flight with low spin for distance and control.",
+    "product_page_urls": [
+      {"retailer": "Titleist", "url": "https://www.titleist.com/golf-balls/pro-v1x"}
+    ]
+  },
+  {
+    "manufacturer": "Titleist",
+    "ball_name": "Pro V1x Left Dash",
+    "construction": "4-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 105,
+    "spin_profile": {
+      "driver_spin": "Low-Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Low",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Firmest feel with lowest spin for maximum distance.",
+    "product_page_urls": [
+      {"retailer": "Titleist", "url": "https://www.titleist.com/golf-balls/pro-v1x-left-dash"}
+    ]
+  },
+  {
+    "manufacturer": "Titleist",
+    "ball_name": "AVX",
+    "construction": "3-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 80,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-15",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Low compression for soft feel and distance.",
+    "product_page_urls": [
+      {"retailer": "Titleist", "url": "https://www.titleist.com/golf-balls/avx"}
+    ]
+  },
+  {
+    "manufacturer": "Titleist",
+    "ball_name": "Tour Soft",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 65,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "Mid"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 39.99,
+    "available_colors": ["White", "Yellow", "Green"],
+    "target_handicap_range": "10-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Soft feel with great distance for mid handicaps.",
+    "product_page_urls": [
+      {"retailer": "Titleist", "url": "https://www.titleist.com/golf-balls/tour-soft"}
+    ]
+  },
+  {
+    "manufacturer": "Titleist",
+    "ball_name": "Velocity",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 85,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 34.99,
+    "available_colors": ["White", "Yellow", "Orange", "Pink"],
+    "target_handicap_range": "20+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Maximum distance with high launch.",
+    "product_page_urls": [
+      {"retailer": "Titleist", "url": "https://www.titleist.com/golf-balls/velocity"}
+    ]
+  },
+  {
+    "manufacturer": "Callaway",
+    "ball_name": "Chrome Tour X",
+    "construction": "4-piece",
+    "cover_material": "Tour Urethane",
+    "compression_rating": 111,
+    "spin_profile": {
+      "driver_spin": "Mid-High",
+      "iron_spin": "High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Highest spin and control for tour-level performance.",
+    "product_page_urls": [
+      {"retailer": "Callaway", "url": "https://www.callawaygolf.com/chrome-tour-x-2026"}
+    ]
+  },
+  {
+    "manufacturer": "Callaway",
+    "ball_name": "Chrome Tour",
+    "construction": "4-piece",
+    "cover_material": "Tour Urethane",
+    "compression_rating": 95,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-15",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Balanced distance and control.",
+    "product_page_urls": [
+      {"retailer": "Callaway", "url": "https://www.callawaygolf.com/chrome-tour-2026"}
+    ]
+  },
+  {
+    "manufacturer": "Callaway",
+    "ball_name": "Chrome Tour Triple Diamond",
+    "construction": "4-piece",
+    "cover_material": "Tour Urethane",
+    "compression_rating": 105,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Low",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "0-5",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Low spin distance for fast swingers.",
+    "product_page_urls": [
+      {"retailer": "Callaway", "url": "https://www.callawaygolf.com/chrome-tour-triple-diamond"}
+    ]
+  },
+  {
+    "manufacturer": "Callaway",
+    "ball_name": "Chrome Soft",
+    "construction": "4-piece",
+    "cover_material": "Tour Urethane",
+    "compression_rating": 75,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid-High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "5-15",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Soft feel with excellent greenside control.",
+    "product_page_urls": [
+      {"retailer": "Callaway", "url": "https://www.callawaygolf.com/chrome-soft"}
+    ]
+  },
+  {
+    "manufacturer": "Callaway",
+    "ball_name": "Supersoft",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 40,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low-Mid"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 24.99,
+    "available_colors": ["White", "Yellow", "Orange", "Pink", "Red"],
+    "target_handicap_range": "15+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Ultra soft for maximum feel and distance.",
+    "product_page_urls": [
+      {"retailer": "Callaway", "url": "https://www.callawaygolf.com/supersoft"}
+    ]
+  },
+  {
+    "manufacturer": "Callaway",
+    "ball_name": "ERC Soft",
+    "construction": "3-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 65,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "Mid"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 44.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "10-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Distance with soft feel.",
+    "product_page_urls": [
+      {"retailer": "Callaway", "url": "https://www.callawaygolf.com/erc-soft"}
+    ]
+  },
+  {
+    "manufacturer": "TaylorMade",
+    "ball_name": "TP5",
+    "construction": "5-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 85,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid-High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Tour performance with high spin.",
+    "product_page_urls": [
+      {"retailer": "TaylorMade", "url": "https://www.taylormadegolf.com/tp5"}
+    ]
+  },
+  {
+    "manufacturer": "TaylorMade",
+    "ball_name": "TP5x",
+    "construction": "5-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 97,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Low-Mid",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 54.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Low spin distance for fast players.",
+    "product_page_urls": [
+      {"retailer": "TaylorMade", "url": "https://www.taylormadegolf.com/tp5x"}
+    ]
+  },
+  {
+    "manufacturer": "TaylorMade",
+    "ball_name": "Tour Response",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 70,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "Mid-High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 44.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "5-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Soft urethane for better players on budget.",
+    "product_page_urls": [
+      {"retailer": "TaylorMade", "url": "https://www.taylormadegolf.com/tour-response"}
+    ]
+  },
+  {
+    "manufacturer": "TaylorMade",
+    "ball_name": "Speed Soft",
+    "construction": "3-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 55,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 29.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "15+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Soft feel distance ball.",
+    "product_page_urls": [
+      {"retailer": "TaylorMade", "url": "https://www.taylormadegolf.com/speed-soft"}
+    ]
+  },
+  {
+    "manufacturer": "Bridgestone",
+    "ball_name": "TOUR B X",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 99,
+    "spin_profile": {
+      "driver_spin": "Mid-High",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Low",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Distance with tour spin.",
+    "product_page_urls": [
+      {"retailer": "Bridgestone", "url": "https://www.bridgestonegolf.com/tour-b-x"}
+    ]
+  },
+  {
+    "manufacturer": "Bridgestone",
+    "ball_name": "TOUR B XS",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 99,
+    "spin_profile": {
+      "driver_spin": "High",
+      "iron_spin": "High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Maximum spin for control.",
+    "product_page_urls": [
+      {"retailer": "Bridgestone", "url": "https://www.bridgestonegolf.com/tour-b-xs"}
+    ]
+  },
+  {
+    "manufacturer": "Bridgestone",
+    "ball_name": "TOUR B RX",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 85,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "10-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Softer feel for moderate speeds.",
+    "product_page_urls": [
+      {"retailer": "Bridgestone", "url": "https://www.bridgestonegolf.com/tour-b-rx"}
+    ]
+  },
+  {
+    "manufacturer": "Bridgestone",
+    "ball_name": "TOUR B RXS",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 85,
+    "spin_profile": {
+      "driver_spin": "Low-Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "10-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Spin control for slicers.",
+    "product_page_urls": [
+      {"retailer": "Bridgestone", "url": "https://www.bridgestonegolf.com/tour-b-rxs"}
+    ]
+  },
+  {
+    "manufacturer": "Srixon",
+    "ball_name": "Z-STAR",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 92,
+    "spin_profile": {
+      "driver_spin": "High",
+      "iron_spin": "High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-15",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Tour performance with soft feel.",
+    "product_page_urls": [
+      {"retailer": "Srixon", "url": "https://www.srixon.com/us/z-star"}
+    ]
+  },
+  {
+    "manufacturer": "Srixon",
+    "ball_name": "Z-STAR XV",
+    "construction": "4-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 112,
+    "spin_profile": {
+      "driver_spin": "Mid-High",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Distance with spin.",
+    "product_page_urls": [
+      {"retailer": "Srixon", "url": "https://www.srixon.com/us/z-star-xv"}
+    ]
+  },
+  {
+    "manufacturer": "Srixon",
+    "ball_name": "Z-STAR DIAMOND",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 106,
+    "spin_profile": {
+      "driver_spin": "High",
+      "iron_spin": "High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "High spin all around.",
+    "product_page_urls": [
+      {"retailer": "Srixon", "url": "https://www.srixon.com/us/z-star-diamond"}
+    ]
+  },
+  {
+    "manufacturer": "Srixon",
+    "ball_name": "Q-STAR ULTISPEED",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 75,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 29.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "15+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Distance ionomer ball.",
+    "product_page_urls": [
+      {"retailer": "Srixon", "url": "https://www.srixon.com/us/q-star-ultispeed"}
+    ]
+  },
+  {
+    "manufacturer": "Srixon",
+    "ball_name": "Soft Feel",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 60,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low-Mid"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 24.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "20+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Softest distance ball.",
+    "product_page_urls": [
+      {"retailer": "Srixon", "url": "https://www.srixon.com/us/soft-feel"}
+    ]
+  },
+  {
+    "manufacturer": "Wilson",
+    "ball_name": "Staff Model",
+    "construction": "4-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 100,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Medium",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Tour level performance.",
+    "product_page_urls": [
+      {"retailer": "Wilson", "url": "https://www.wilson.com/en-us/golf/balls/staff-model"}
+    ]
+  },
+  {
+    "manufacturer": "Wilson",
+    "ball_name": "Staff Model X",
+    "construction": "4-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 114,
+    "spin_profile": {
+      "driver_spin": "Mid-High",
+      "iron_spin": "High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-5",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "High spin tour ball.",
+    "product_page_urls": [
+      {"retailer": "Wilson", "url": "https://www.wilson.com/en-us/golf/balls/staff-model-x"}
+    ]
+  },
+  {
+    "manufacturer": "Wilson",
+    "ball_name": "Triad",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 80,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "Mid-High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 44.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "5-15",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Balanced performance.",
+    "product_page_urls": [
+      {"retailer": "Wilson", "url": "https://www.wilson.com/en-us/golf/balls/triad"}
+    ]
+  },
+  {
+    "manufacturer": "Maxfli",
+    "ball_name": "Tour X",
+    "construction": "4-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 117,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Low-Mid",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 39.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Tour level value.",
+    "product_page_urls": [
+      {"retailer": "Maxfli", "url": "https://www.maxfli.com/tour-x"}
+    ]
+  },
+  {
+    "manufacturer": "Maxfli",
+    "ball_name": "Tour",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 90,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 39.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "5-15",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Great all-around performer.",
+    "product_page_urls": [
+      {"retailer": "Maxfli", "url": "https://www.maxfli.com/tour"}
+    ]
+  },
+  {
+    "manufacturer": "Vice",
+    "ball_name": "Pro Plus",
+    "construction": "4-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 116,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid-High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Medium",
+    "price_per_dozen_msrp": 34.99,
+    "available_colors": ["White", "Lime"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Premium DTC performance.",
+    "product_page_urls": [
+      {"retailer": "Vice", "url": "https://www.vicegolf.com/pro-plus"}
+    ]
+  },
+  {
+    "manufacturer": "Vice",
+    "ball_name": "Pro",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 95,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 34.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "5-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Versatile tour ball.",
+    "product_page_urls": [
+      {"retailer": "Vice", "url": "https://www.vicegolf.com/pro"}
+    ]
+  },
+  {
+    "manufacturer": "Vice",
+    "ball_name": "Pro Air",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 65,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low-Mid",
+      "wedge_spin": "Mid"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 34.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "15+",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Soft feel for slower swings.",
+    "product_page_urls": [
+      {"retailer": "Vice", "url": "https://www.vicegolf.com/pro-air"}
+    ]
+  },
+  {
+    "manufacturer": "Kirkland Signature",
+    "ball_name": "Performance+ V3.0",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 107,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 24.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "5-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Excellent value urethane ball.",
+    "product_page_urls": [
+      {"retailer": "Costco", "url": "https://www.costco.com/kirkland-signature-performance-golf-balls"}
+    ]
+  },
+  {
+    "manufacturer": "Mizuno",
+    "ball_name": "Pro S",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 95,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Low",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "0-10",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 3
+    },
+    "marketing_description": "Low spin firm tour ball.",
+    "product_page_urls": [
+      {"retailer": "Mizuno", "url": "https://www.mizunogolf.com/us/en-us/golf-balls/pro-s"}
+    ]
+  },
+  {
+    "manufacturer": "PXG",
+    "ball_name": "Xtreme Tour",
+    "construction": "4-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 95,
+    "spin_profile": {
+      "driver_spin": "Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Medium",
+    "price_per_dozen_msrp": 49.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "0-15",
+    "durability_rating": 3,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Premium performance.",
+    "product_page_urls": [
+      {"retailer": "PXG", "url": "https://www.pxg.com/xtreme-tour"}
+    ]
+  },
+  {
+    "manufacturer": "Pinnacle",
+    "ball_name": "Rush",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 80,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Firm",
+    "price_per_dozen_msrp": 19.99,
+    "available_colors": ["White"],
+    "target_handicap_range": "20+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Maximum distance value ball.",
+    "product_page_urls": [
+      {"retailer": "Pinnacle", "url": "https://www.pinnaclegolf.com/rush"}
+    ]
+  },
+  {
+    "manufacturer": "Wilson",
+    "ball_name": "Duo Soft",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 35,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 24.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "20+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Softest 2-piece ball.",
+    "product_page_urls": [
+      {"retailer": "Wilson", "url": "https://www.wilson.com/en-us/golf/balls/duo-soft"}
+    ]
+  },
+  {
+    "manufacturer": "Snell",
+    "ball_name": "Get Sum",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 68,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Mid"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 24.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "15+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Long distance value ball with soft feel and extreme durability.",
+    "product_page_urls": [
+      {"retailer": "Snell", "url": "https://www.snellgolf.com/products/get-sum"}
+    ]
+  },
+  {
+    "manufacturer": "Snell",
+    "ball_name": "Prime 3.0",
+    "construction": "3-piece",
+    "cover_material": "Cast Urethane",
+    "compression_rating": 82,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid-High",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 34.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "10-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Total performance with low driver spin, mid-high iron spin, and soft feel for mid-swing speeds.",
+    "product_page_urls": [
+      {"retailer": "Snell", "url": "https://www.snellgolf.com/products/prime-3-0-golf-ball"}
+    ]
+  },
+  {
+    "manufacturer": "Cut",
+    "ball_name": "Red",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 60,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low-Mid"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 16.00,
+    "available_colors": ["White"],
+    "target_handicap_range": "15+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Ultra-affordable long-distance 2-piece ball with soft feel for beginners and high handicappers.",
+    "product_page_urls": [
+      {"retailer": "Cut", "url": "https://www.cutgolf.co/products/cut-red"}
+    ]
+  },
+  {
+    "manufacturer": "Cut",
+    "ball_name": "Grey",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 80,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 24.95,
+    "available_colors": ["Grey"],
+    "target_handicap_range": "10-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Affordable 3-piece urethane ball with butter-soft feel and excellent greenside spin.",
+    "product_page_urls": [
+      {"retailer": "Cut", "url": "https://www.cutgolf.co/products/cut-grey"}
+    ]
+  },
+  {
+    "manufacturer": "OnCore",
+    "ball_name": "AVANT 55",
+    "construction": "2-piece",
+    "cover_material": "Surlyn",
+    "compression_rating": 55,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low-Mid"
+    },
+    "launch_characteristics": "High",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 19.99,
+    "available_colors": ["White", "Yellow", "Matte Green"],
+    "target_handicap_range": "20+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Award-winning super-soft distance ball perfect for slower swings and cold weather.",
+    "product_page_urls": [
+      {"retailer": "OnCore", "url": "https://www.oncoregolf.com/products/avant-55"}
+    ]
+  },
+  {
+    "manufacturer": "OnCore",
+    "ball_name": "ELIXR",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 84,
+    "spin_profile": {
+      "driver_spin": "Low-Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 29.99,
+    "available_colors": ["White", "Yellow", "Matte"],
+    "target_handicap_range": "10-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Great-value 3-piece urethane ball with balanced distance, accuracy, and greenside control.",
+    "product_page_urls": [
+      {"retailer": "OnCore", "url": "https://www.oncoregolf.com/products/elixr"}
+    ]
+  },
+  {
+    "manufacturer": "Bridgestone",
+    "ball_name": "e12 Speed",
+    "construction": "2-piece",
+    "cover_material": "Surlyn",
+    "compression_rating": 75,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Low-Mid"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Medium",
+    "price_per_dozen_msrp": 24.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "15+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "Best-value distance ball with maximum speed and penetrating flight (2026 robot test winner).",
+    "product_page_urls": [
+      {"retailer": "Bridgestone", "url": "https://www.bridgestonegolf.com/e12-speed"}
+    ]
+  },
+  {
+    "manufacturer": "TaylorMade",
+    "ball_name": "Distance+",
+    "construction": "2-piece",
+    "cover_material": "Ionomer",
+    "compression_rating": 77,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low",
+      "wedge_spin": "Mid"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 24.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "15+",
+    "durability_rating": 5,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 4
+    },
+    "marketing_description": "High-velocity distance with soft feel and alignment aid option.",
+    "product_page_urls": [
+      {"retailer": "TaylorMade", "url": "https://www.taylormadegolf.com/Distance+-Golf-Balls"}
+    ]
+  },
+  {
+    "manufacturer": "Titleist",
+    "ball_name": "TruFeel",
+    "construction": "2-piece",
+    "cover_material": "TruFlex Ionomer",
+    "compression_rating": 65,
+    "spin_profile": {
+      "driver_spin": "Low",
+      "iron_spin": "Low-Mid",
+      "wedge_spin": "Mid"
+    },
+    "launch_characteristics": "Mid",
+    "feel_rating": "Very Soft",
+    "price_per_dozen_msrp": 24.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "15+",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Ultra-soft feel with long distance and consistent short-game performance.",
+    "product_page_urls": [
+      {"retailer": "Titleist", "url": "https://www.titleist.com/golf-balls/trufeel"}
+    ]
+  },
+  {
+    "manufacturer": "Srixon",
+    "ball_name": "Q-Star Tour",
+    "construction": "3-piece",
+    "cover_material": "Urethane",
+    "compression_rating": 74,
+    "spin_profile": {
+      "driver_spin": "Low-Mid",
+      "iron_spin": "Mid",
+      "wedge_spin": "High"
+    },
+    "launch_characteristics": "Mid-High",
+    "feel_rating": "Soft",
+    "price_per_dozen_msrp": 34.99,
+    "available_colors": ["White", "Yellow"],
+    "target_handicap_range": "10-20",
+    "durability_rating": 4,
+    "temperature_performance": {
+      "optimal_range": "All",
+      "cold_weather_suitability": 5
+    },
+    "marketing_description": "Tour-level spin and soft feel at outstanding value.",
+    "product_page_urls": [
+      {"retailer": "Srixon", "url": "https://www.srixon.com/us/q-star-tour"}
+    ]
+  }
+]
