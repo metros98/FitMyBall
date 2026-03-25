@@ -7,8 +7,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { RecommendationCard } from "@/components/results/RecommendationCard";
-import { SecondaryBallCard } from "@/components/results/SecondaryBallCard";
+import { TopBallCard } from "@/components/results/TopBallCard";
 import { AlternativesSection } from "@/components/results/AlternativesSection";
 import { SeasonalSection } from "@/components/results/SeasonalSection";
 import { ResultsStagger } from "@/components/results/ResultsStagger";
@@ -83,26 +82,11 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
     }
   }
 
-  const topRecommendation = recommendation.recommendations[0];
-  const isLowMatch = topRecommendation.matchPercentage < 50;
-  const secondaryRecommendations = recommendation.recommendations.slice(
-    1,
+  const isLowMatch = recommendation.recommendations[0]?.matchPercentage < 50;
+  const topRecommendations = recommendation.recommendations.slice(
+    0,
     isLowMatch ? 3 : 5,
   );
-  const topBall = balls.get(topRecommendation.ballId);
-
-  if (!topBall) {
-    return (
-      <div className="container mx-auto px-4 py-12">
-        <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertDescription>
-            Error loading ball data. Please try again.
-          </AlertDescription>
-        </Alert>
-      </div>
-    );
-  }
 
   // Confidence level styling
   const confidenceBadgeVariant =
@@ -199,41 +183,30 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
             </Alert>
           )}
 
-          {/* #1 Recommendation - Hero Card on dark surface */}
-          <ResultsStagger index={0}>
-            <section className="bg-surface-card rounded-xl p-6">
-              <RecommendationCard
-                recommendation={topRecommendation}
-                ball={topBall}
-                rank={1}
-              />
-            </section>
-          </ResultsStagger>
-
-          {/* Secondary Recommendations */}
-          {secondaryRecommendations.length > 0 && (
-            <ResultsStagger index={1}>
+          {/* Top Recommendations - Equal-size cards */}
+          {topRecommendations.length > 0 && (
+            <ResultsStagger index={0}>
               <section className="space-y-6">
                 <div>
                   <h2 className="text-2xl font-bold text-slate-100">
-                    Other Great Matches
+                    Your Top Matches
                   </h2>
                   <p className="text-slate-400 mt-1">
-                    These balls also fit your game well
+                    Ranked by how well they fit your game
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {secondaryRecommendations.map((rec, idx) => {
+                <div className="space-y-4">
+                  {topRecommendations.map((rec, idx) => {
                     const ball = balls.get(rec.ballId);
                     if (!ball) return null;
 
                     return (
-                      <SecondaryBallCard
+                      <TopBallCard
                         key={rec.ballId}
                         recommendation={rec}
                         ball={ball}
-                        rank={idx + 2}
+                        rank={idx + 1}
                       />
                     );
                   })}
@@ -243,7 +216,7 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
           )}
 
           {/* Alternatives Section */}
-          <ResultsStagger index={2}>
+          <ResultsStagger index={1}>
             <AlternativesSection
               alternatives={recommendation.alternatives}
               balls={balls}
@@ -251,7 +224,7 @@ export default async function ResultsPage({ params }: ResultsPageProps) {
           </ResultsStagger>
 
           {/* Seasonal Section */}
-          <ResultsStagger index={3}>
+          <ResultsStagger index={2}>
             <SeasonalSection
               seasonalPicks={recommendation.seasonalPicks}
               balls={balls}

@@ -10,12 +10,11 @@ interface PerformanceBreakdownProps {
   className?: string;
 }
 
-const categoryLabels: Record<keyof CategoryScores, string> = {
+const categoryLabels: Partial<Record<keyof CategoryScores, string>> = {
   swingSpeedMatch: "Swing Speed",
   performancePriorities: "Performance",
   preferences: "Preferences",
   playingConditions: "Conditions",
-  currentBallAnalysis: "vs Current Ball",
 };
 
 export function PerformanceBreakdown({ scores, className }: PerformanceBreakdownProps) {

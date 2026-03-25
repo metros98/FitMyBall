@@ -10,7 +10,7 @@
   :root {
     --background: 222 47% 3%;        /* #030712 surface-base */
     --foreground: 210 40% 96%;       /* #F1F5F9 text-primary */
-    --card: 217 50% 10%;             /* #0A1628 surface-card */
+    --card: 231 100% 3%;             /* #0A1628 surface-card */
     --card-foreground: 210 40% 96%;
     --popover: 218 42% 14%;          /* #111D35 surface-elevated */
     --popover-foreground: 210 40% 96%;
@@ -49,7 +49,7 @@
     /* Surface */
     --surface-slate: #030712;
     --surface-base: #0c102d;
-    --surface-card: #0A1628;
+    --surface-card: #00020f;
     --surface-elevated: #111D35;
     --surface-active: #1A2744;
 

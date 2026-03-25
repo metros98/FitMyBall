@@ -171,7 +171,7 @@ export function ComparisonTable({ balls }: ComparisonTableProps) {
                       key={ball.id}
                       className={cn(
                         "border-b border-l px-4 py-3 text-sm",
-                        valuesDiffer && "bg-green-50"
+                        valuesDiffer && "text-accent-cyan"
                       )}
                     >
                       {displayValue}

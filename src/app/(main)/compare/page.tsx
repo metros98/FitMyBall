@@ -189,17 +189,7 @@ export default function ComparePage({ searchParams }: ComparePageProps) {
 
           <Separator />
 
-          {/* Spin Profile Chart */}
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">Spin Profile</h2>
-            <Card>
-              <CardContent className="pt-6">
-                <SpinRadarChart balls={balls} />
-              </CardContent>
-            </Card>
-          </section>
 
-          <Separator />
 
           {/* Recommendations */}
           <section>
